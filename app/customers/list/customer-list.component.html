@@ -1,0 +1,20 @@
+<div class='panel-heading'>
+    Customers
+</div>
+<div class='panel-body'>
+    <div class='table-responsive' *ngIf='customers && customers.length'>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let customer of customers'>
+                    <td><a [routerLink]="['Customer', {customerId: customer.id}]">{{customer.id}}</a></td>
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf='!customers || customers.length == 0'>No customers match</div>
+</div>

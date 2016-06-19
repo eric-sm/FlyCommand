@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'MuseoSans500';
+    src: url('assets/fonts/museosans_500.eot');
+    src: url('assets/fonts/museosans_500.eot') format('embedded-opentype'),
+         url('assets/fonts/museosans_500.woff') format('woff'),
+         url('assets/fonts/museosans_500.ttf') format('truetype'),
+         url('assets/fonts/museosans_500.svg#MuseoSans500') format('svg');
+}
+@font-face {
+    font-family: 'MuseoSans700';
+    src: url('assets/fonts/museosans_700.eot');
+    src: url('assets/fonts/museosans_700.eot') format('embedded-opentype'),
+         url('assets/fonts/museosans_700.woff') format('woff'),
+         url('assets/fonts/museosans_700.ttf') format('truetype'),
+         url('assets/fonts/museosans_700.svg#MuseoSans700') format('svg');
+}
+@font-face {
+    font-family: 'MuseoSlab700';
+    src: url('assets/fonts/museo_slab_700.eot');
+    src: url('assets/fonts/museo_slab_700.eot') format('embedded-opentype'),
+         url('assets/fonts/museo_slab_700.woff') format('woff'),
+         url('assets/fonts/museo_slab_700.ttf') format('truetype'),
+         url('assets/fonts/museo_slab_700.svg#MuseoSlab700') format('svg');
+}
+
+li {
+    font-size: large;
+}
+
+div.panel-heading {
+   font-size: x-large; 
+}
+
+body {
+    margin-top: 120px;
+    font-family: MuseoSans500;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: MuseoSlab700;
+}
+
+.navbar {
+    background-color: #005dab;
+    color: white;
+}
+
+footer .nav {
+    font-size: 12px;
+}
+
+footer .copyright {
+    clear: both;
+    font-size: 10px;
+}

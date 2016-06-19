@@ -1,0 +1,43 @@
+<div class='panel-heading'>
+    Orders
+</div>
+<div class='panel-body'>
+    <div>
+        <div>Order Search:</div>
+        <div>
+            <input type='text' [(ngModel)]='listFilter' />
+        </div>
+    </div>
+    <button (click)='togglePrice()' class='btn btn-primary'>
+        {{showPrice ? 'Hide' : 'Show'}} price
+    </button>
+    <div class='table-responsive' *ngIf='orders && orders.length'>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Order #</th>
+                    <th>Services</th>
+                    <th>Status</th>
+                    <th>Picked Up</th>
+                    <th>Delivered</th>
+                    <th>Pickup Truck</th>
+                    <th *ngIf='showPrice'>Price</th>
+                    <th>Customer Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let order of orders | orderFilter: listFilter'>
+                    <td><a [routerLink]="['Order', {orderId: order.id}]">{{order.id}}</a></td>
+                    <td>{{order.services}}</td>
+                    <td>{{order.status}}</td>
+                    <td>{{order.pickup }}</td>
+                    <td>{{order.delivery }}</td>
+                    <td>{{order.pickupTruck}}</td>
+                    <td *ngIf='showPrice'>{{order.price | currency: 'USD':true:'1.2-2' }}</td>
+                    <td><ai-star [rating]='order.overallRating'></ai-star></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf='!orders || orders.length == 0'>No orders match</div>
+</div>

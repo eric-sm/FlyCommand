@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'MuseoSlab700';
+    src: url('museo_slab_700.eot');
+    src: url('museo_slab_700.eot') format('embedded-opentype'),
+         url('museo_slab_700.woff') format('woff'),
+         url('museo_slab_700.ttf') format('truetype'),
+         url('museo_slab_700.svg#MuseoSlab700') format('svg');
+}
