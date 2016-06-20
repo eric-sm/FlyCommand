@@ -10,7 +10,7 @@ export class CustomerService {
 
     constructor(private _http: Http) {};
 
-    getProfile(customerId: number): Observable<ICustomer> {
+    public getProfile(customerId: number): Observable<ICustomer> {
         var customerUrl: string = this._customerUrl + '?json={"id":' + customerId + '}';
 
         return this._http.get(customerUrl)
@@ -31,7 +31,14 @@ export class CustomerService {
         customer.id = body.id;
         customer.nameFirst = body.name_first;
         customer.nameLast = body.name_last;
-        
+        customer.phone = body.phone;
+    	customer.addresses = [];
+    	customer.appVersion = body.app_version;
+        customer.deviceType = body.device_type;
+        customer.accountCreated = body.customer_since;
+        customer.creditBalance = body.credit_balance;
+        customer.isFacebookConnected = body.facebook_connect ? true : false;
+
         return customer;
     }
 }

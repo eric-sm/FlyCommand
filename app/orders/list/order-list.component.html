@@ -18,10 +18,9 @@
                     <th>Order #</th>
                     <th>Services</th>
                     <th>Status</th>
-                    <th>Picked Up</th>
-                    <th>Delivered</th>
-                    <th>Pickup Truck</th>
-                    <th *ngIf='showPrice'>Price</th>
+                    <th>Pick Up</th>
+                    <th>Delivery</th>
+                    <th>Price</th>
                     <th>Customer Rating</th>
                 </tr>
             </thead>
@@ -32,8 +31,7 @@
                     <td>{{order.status}}</td>
                     <td>{{order.pickup }}</td>
                     <td>{{order.delivery }}</td>
-                    <td>{{order.pickupTruck}}</td>
-                    <td *ngIf='showPrice'>{{order.price | currency: 'USD':true:'1.2-2' }}</td>
+                    <td>{{order.price | currency: 'USD':true:'1.2-2' }}</td>
                     <td><ai-star [rating]='order.overallRating'></ai-star></td>
                 </tr>
             </tbody>
