@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 export class OrderService {
     private _ordersUrl = 'http://ec2-52-23-221-11.compute-1.amazonaws.com/FlyCommand/order';
 
-    constructor(private _http:Http) {};
+    constructor(private _http: Http) {};
 
     getOrders(customerId: number): Observable<IOrder[]> {
         return this._http.get(this._ordersUrl)

@@ -10,7 +10,8 @@ import { OrderService } from '../order.service';
     templateUrl : 'app/orders/list/order-list.component.html',
     styleUrls: ['app/orders/list/order-list.component.css'],
     pipes: [OrderFilterPipe],
-    directives: [StarComponent, ROUTER_DIRECTIVES]
+    directives: [StarComponent, ROUTER_DIRECTIVES],
+    bindings: [OrderService]
 })
 export class OrderListComponent implements OnInit {
     showPrice: boolean = true;
@@ -19,13 +20,14 @@ export class OrderListComponent implements OnInit {
     errorMessage: string;
 
     constructor(private _orderService: OrderService) {
-        this._orderService.getOrders(357)
-            .subscribe(orders => this.orders = orders, error => this.errorMessage = <any>error);
     }
 
     togglePrice(): void {
         this.showPrice = !this.showPrice;
     };
 
-    ngOnInit(): void {};
+    ngOnInit(): void {
+        this._orderService.getOrders(357)
+            .subscribe(orders => this.orders = orders, error => this.errorMessage = <any>error);
+    };
 }
