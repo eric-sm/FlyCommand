@@ -6,4 +6,9 @@ import { Component } from 'angular2/core';
 })
 export class CustomerSearchComponent {
     searchTerm: string;
+
+    runSearch(): void {
+        console.debug(this.searchTerm);
+        return;
+    }
 }

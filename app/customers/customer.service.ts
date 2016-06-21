@@ -14,7 +14,7 @@ export class CustomerService {
         var customerUrl: string = this._customerUrl + '?json={"id":' + customerId + '}';
 
         return this._http.get(customerUrl)
-            .map(this._extractData)
+            .map(this._extractProfileData)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this._handleError);
     };
@@ -24,7 +24,7 @@ export class CustomerService {
         return Observable.throw(error.json().error || 'Server Error');
     }
 
-    private _extractData(response: Response): ICustomer {
+    private _extractProfileData(response: Response): ICustomer {
         let body = response.json();
 
         var customer: ICustomer = <ICustomer>{};

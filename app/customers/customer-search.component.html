@@ -2,7 +2,7 @@
 <div class='col-md-9 col-sm-9'>
     <div class='workspace'>
         <h3>Search</h3>
-        <input id='customer-search-input' type='text' placeholder='By phone number, email, name, or order no.'>
+        <input [(ngModel)]='searchTerm' (keyup)='runSearch()' id='customer-search-input' type='text' placeholder='By phone number, email, name, or order no.'>
     </div>
 </div>
 <div id='recently-viewed' class='col-md-3 col-sm-3'>
