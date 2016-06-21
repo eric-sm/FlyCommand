@@ -1,5 +1,12 @@
 #customer-search-input {
     width: 100%;
+    border: 0;
+    height: 40px;
+    padding: 5px;
+    box-shadow: 0px 1px 1px 1px #ddd;
+}
+#customer-search-input:focus {
+     outline: none;
 }
 .sidebar h3 {
     font-size: 24px;
@@ -25,6 +32,9 @@
 }
 
 @media (max-width: 767px) {
+    #customer-search-input {
+        font-size: medium;
+    }
     #recently-viewed {
         display: none;
     }
