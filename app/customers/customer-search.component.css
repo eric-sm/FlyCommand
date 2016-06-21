@@ -1,0 +1,17 @@
+#customer-search-input {
+    width: 90%;
+}
+
+@media (max-width: 767px) {
+    #recently-viewed {
+        display: none;
+    }
+
+    div {
+        padding-top: 15px;
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+}

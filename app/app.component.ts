@@ -4,7 +4,7 @@ import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, Router } from 'angula
 import './rxjs-operators';
 
 import { CustomerProfileComponent } from './customers/shared/customer-profile.component';
-import { CustomerListComponent } from './customers/list/customer-list.component';
+import { CustomerSearchComponent } from './customers/customer-search.component';
 import { OrderService } from './orders/order.service';
 import { OrderListComponent } from './orders/list/order-list.component';
 import { OrderComponent } from './orders/order.component';
@@ -17,7 +17,7 @@ import { OrderComponent } from './orders/order.component';
     providers: [OrderService, HTTP_PROVIDERS, ROUTER_PROVIDERS]
 })
 @RouteConfig([
-    {path: '/customers/', name: 'Customers', component: CustomerListComponent}, 
+    {path: '/customers/', name: 'Customers', component: CustomerSearchComponent}, 
     {path: '/customer/:customerId/', name: 'Customer', component: CustomerProfileComponent}, 
     {path: '/order/:orderId/', name: 'Order', component: OrderComponent}
 ])

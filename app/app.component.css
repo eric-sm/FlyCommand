@@ -1,3 +1,4 @@
+/* FlyCleaners Museu fonts */
 @font-face {
     font-family: 'MuseoSans500';
     src: url('assets/fonts/museosans_500.eot');
@@ -23,28 +24,38 @@
          url('assets/fonts/museo_slab_700.svg#MuseoSlab700') format('svg');
 }
 
+
+/* Main override styles app-wide */
+body {
+    margin-top: 70px;  /* handle the top nav height */
+    font-family: MuseoSans500;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: MuseoSlab700;
+}
 li {
     font-size: large;
 }
-
 div.panel-heading {
    font-size: x-large; 
 }
 
-body {
-    margin-top: 120px;
-    font-family: MuseoSans500;
-}
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: MuseoSlab700;
-}
-
-.navbar {
+/* Local app.component.html styles */
+header.navbar, footer.navbar {
     background-color: #005dab;
     color: white;
 }
-
+header {
+    padding-right: 0;
+}
+header button.navbar-toggle {
+    margin-top: 15px;
+    margin-right: 0;
+}
+header > div.col-md-10.col-sm-2 {
+    padding-right: 5px;
+}
 header img {
     max-width: 150px;
     margin: 20px;
@@ -55,11 +66,7 @@ header img {
 header.navbar-default .navbar-nav > li > a,
 header.navbar-default .navbar-nav > li > a:hover,
 header.navbar-default .navbar-nav > li > a:active,
-header.navbar-default .navbar-nav > li > a:visited,
-footer.navbar-default .navbar-nav > li > a,
-footer.navbar-default .navbar-nav > li > a:hover,
-footer.navbar-default .navbar-nav > li > a:active,
-footer.navbar-default .navbar-nav > li > a:visited {
+header.navbar-default .navbar-nav > li > a:visited {
     color: white;
     height: 70px;
     width: 70px;
@@ -77,11 +84,64 @@ header .nav {
     font-size: small;
     position: relative;
 }
+footer.navbar-default .navbar-nav > li > a,
+footer.navbar-default .navbar-nav > li > a:active,
+footer.navbar-default .navbar-nav > li > a:visited {
+    color: white;
+    height: 40px;
+    width: 100px;
+    padding: 10px 0;
+    text-align: center;
+}
+footer.navbar-default .navbar-nav > li > a:hover {
+    font-weight: bold;
+}
 footer .nav {
-    font-size: smaller;
+    position: relative;
+    top: 2px;
+    font-size: small;
+}
+footer ul.nav {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+footer li.nav {
+    display: inline-block;
+}
+footer .copyright { /* Copyright text at very bottom of the screen */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    font-size: 8px;
+    text-align: center;
+}
+footer .copyright > div {
+    position: relative;
+    left:-50%;
 }
 
-footer .copyright {
-    clear: both;
-    font-size: 10px;
+
+/* Media query customizations */
+/* Top navigation on wider screens */
+@media (min-width: 1200px) {
+    header.navbar-default .navbar-nav > li {
+        width: 85px;
+    }
+}
+@media (min-width: 1400px) {
+    header.navbar-default .navbar-nav > li {
+        width: 100px;
+    }
+}
+@media (max-width: 767px) {
+    footer .copyright > div {
+        position: relative;
+        left:-65%;
+    }  
+    footer.navbar-default .navbar-nav > li > a,
+    footer.navbar-default .navbar-nav > li > a:active,
+    footer.navbar-default .navbar-nav > li > a:visited {
+        font-size: smaller;
+        width: 60px;
+    }
 }
