@@ -1,11 +1,14 @@
 <div>
     <header class='container-fluid navbar navbar-default navbar-fixed-top'>
-        <div class='col-md-2 col-sm-10'>
+        <div (click)='closeMenu()' class='col-md-2 col-sm-10'>
             <div class='pull-left'><img src='app/assets/images/flycommand_logo.png'/></div>
         </div>
         <div class='col-md-10 col-sm-2'>
-             <button class='btn btn-success navbar-toggle'><span class='glyphicon glyphicon-chevron-down'></span></button>
-             <ul class='nav navbar-nav navbar-collapse collapse'>
+             <button (click)='toggleMenu()' class='btn btn-success navbar-toggle'>
+                 <span *ngIf='!showMenu' class='glyphicon glyphicon-chevron-down'></span>
+                 <span *ngIf='showMenu' class='glyphicon glyphicon-chevron-up'></span>
+                 </button>
+             <ul *ngIf='showMenu' class='nav navbar-nav'>
                 <li class='nav'><a [routerLink]="['Customers']">Customers</a></li>
                 <li class='nav'><a href='http://services.flycleaners.com/Tracker/trucks'>Trucks</a></li>
                 <li class='nav'><a href='http://services.flycleaners.com/Tracker/employees'>Drivers</a></li>
@@ -17,7 +20,7 @@
             </ul>
         </div>
     </header>
-    <div class='container-flued'><router-outlet></router-outlet></div>
+    <div (click)='closeMenu()' class='container-flued'><router-outlet></router-outlet></div>
     <footer class='container-fluid navbar navbar-default navbar-fixed-bottom'>
         <div class='col-md-12'>
             <ul class='nav navbar-nav'>

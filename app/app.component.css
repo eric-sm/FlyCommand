@@ -127,12 +127,52 @@ footer .copyright > div {
     header.navbar-default .navbar-nav > li {
         width: 85px;
     }
+    header.navbar-default .navbar-nav > li > a,
+    header.navbar-default .navbar-nav > li > a:hover,
+    header.navbar-default .navbar-nav > li > a:active,
+    header.navbar-default .navbar-nav > li > a:visited {
+        width: 85px;
+    }
 }
 @media (min-width: 1400px) {
     header.navbar-default .navbar-nav > li {
         width: 100px;
     }
+    header.navbar-default .navbar-nav > li > a,
+    header.navbar-default .navbar-nav > li > a:hover,
+    header.navbar-default .navbar-nav > li > a:active,
+    header.navbar-default .navbar-nav > li > a:visited {
+        width: 100px;
+    }
 }
+/* Dropdown nagivation for small screens */
+@media (max-width: 992px) {
+    header ul.nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        margin-top: 0;
+        background-color: #005dab;
+    }
+    header.navbar-default .navbar-nav > li {
+        border-bottom: #337ab7 1px solid;
+        height: 50px;
+        width: 200px;
+    }
+    header.navbar-default .navbar-nav > li > a,
+    header.navbar-default .navbar-nav > li > a:hover,
+    header.navbar-default .navbar-nav > li > a:active,
+    header.navbar-default .navbar-nav > li > a:visited {
+        height: 20px;
+        width: 200px;
+        padding: 15px;
+        text-align: center;
+    }
+    .navbar-default .navbar-toggle:focus {
+        background-color: transparent;
+    }
+}
+/* Footer text tiny, copyright centered on small screens */
 @media (max-width: 767px) {
     footer .copyright > div {
         position: relative;

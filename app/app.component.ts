@@ -22,10 +22,20 @@ import { OrderComponent } from './orders/order.component';
     {path: '/order/:orderId/', name: 'Order', component: OrderComponent}
 ])
 export class AppComponent {
+    showMenu: boolean = true;
+
     constructor(private _router: Router) {}
 
     home(): void {
         this._router.navigate(['Start']);
+    }
+
+    toggleMenu(): void {
+        this.showMenu = !this.showMenu;
+    }
+
+    closeMenu(): void {
+        this.showMenu = false;
     }
 }
 
