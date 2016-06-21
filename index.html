@@ -39,9 +39,17 @@
           System.import('app/main')
                 .then(null, console.error.bind(console));
         </script>
+        <style>
+            #splash-screen-logo {
+                position:fixed; top:50%; left:50%; margin-top: -125px; margin-left: -200px;
+            }
+            @media (max-width: 767px) {
+                #splash-screen-logo {width:200px; margin-top: -62px; margin-left: -100px;}
+            }
+        </style>
     </head>
 
     <body>
-        <fcc-app>TODO: FlyCleaners Logo, centered horizontally and vertically</fcc-app>
+        <fcc-app><img id='splash-screen-logo' src='app/assets/images/flycleaners_logo.png'></fcc-app>
     </body>
 </html>

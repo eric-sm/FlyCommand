@@ -29,6 +29,7 @@
 body {
     margin-top: 70px;  /* handle the top nav height */
     font-family: MuseoSans500;
+    background-color: #b0becb;
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: MuseoSlab700;
@@ -38,6 +39,9 @@ li {
 }
 div.panel-heading {
    font-size: x-large; 
+}
+.main {
+    background-color: #e9e9e9;
 }
 
 
