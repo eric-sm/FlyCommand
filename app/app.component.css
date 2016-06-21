@@ -146,7 +146,7 @@ footer .copyright > div {
     }
 }
 /* Dropdown nagivation for small screens */
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     header ul.nav {
         position: absolute;
         top: 70px;
@@ -167,6 +167,37 @@ footer .copyright > div {
         width: 200px;
         padding: 15px;
         text-align: center;
+    }
+    .navbar-default .navbar-toggle:focus {
+        background-color: transparent;
+    }
+}
+@media (max-width: 767px) {
+    header ul.nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 300px;
+        margin-top: 0;
+        background-color: transparent;
+        font-size: 0;
+    }
+    header.navbar-default .navbar-nav > li {
+        background-color: #005dab;
+        border: #337ab7 1px solid;
+        height: 100px;
+        width: 100px;
+        display: inline-block;
+    }
+    header.navbar-default .navbar-nav > li > a,
+    header.navbar-default .navbar-nav > li > a:hover,
+    header.navbar-default .navbar-nav > li > a:active,
+    header.navbar-default .navbar-nav > li > a:visited {
+        height: 100px;
+        width: 100px;
+        padding: 40px 0;
+        text-align: center;
+        font-size: 16px;
     }
     .navbar-default .navbar-toggle:focus {
         background-color: transparent;
