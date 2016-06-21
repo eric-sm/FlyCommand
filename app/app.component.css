@@ -163,7 +163,7 @@ footer .copyright > div {
     header.navbar-default .navbar-nav > li > a:hover,
     header.navbar-default .navbar-nav > li > a:active,
     header.navbar-default .navbar-nav > li > a:visited {
-        height: 20px;
+        height: 50px;
         width: 200px;
         padding: 15px;
         text-align: center;
