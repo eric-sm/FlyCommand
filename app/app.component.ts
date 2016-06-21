@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component, OnInit } from 'angular2/core';
 import { HTTP_PROVIDERS } from 'angular2/http';
 import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, Router } from 'angular2/router';
 import './rxjs-operators';
@@ -22,7 +22,7 @@ import { OrderComponent } from './orders/order.component';
     {path: '/order/:orderId/', name: 'Order', component: OrderComponent}
 ])
 export class AppComponent {
-    showMenu: boolean = true;
+    showMenu: boolean = false;
 
     constructor(private _router: Router) {}
 
@@ -37,6 +37,19 @@ export class AppComponent {
     closeMenu(): void {
         this.showMenu = false;
     }
+
+    setupMenu(screenWidth: number): void {
+        if (screenWidth >= 992) this.showMenu = true;
+        else this.showMenu = false;
+    }
+
+    onResize(event) {
+        this.setupMenu(event.target.innerWidth);
+    }
+
+    ngOnInit(): void {
+        this.setupMenu(window.innerWidth);
+    };
 }
 
 
