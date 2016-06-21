@@ -180,7 +180,7 @@ footer .copyright > div {
         width: 300px;
         margin-top: 0;
         background-color: transparent;
-        font-size: 0;
+        font-size: 0; /* so that spaces between LI tags aren not displayed/take up space */
     }
     header.navbar-default .navbar-nav > li {
         background-color: #005dab;
