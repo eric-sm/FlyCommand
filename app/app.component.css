@@ -210,6 +210,11 @@ footer .copyright > div {
 }
 /* Footer text tiny, copyright centered on small screens */
 @media (max-width: 767px) {
+    footer { 
+        display: none; /* actually, let's not show it at all;
+        stuff below saved in case it needs to be restored at 
+        some later date */
+    }
     footer .copyright > div {
         position: relative;
         left:-65%;
@@ -229,6 +234,11 @@ footer .copyright > div {
     margin: 15px 0;
     padding: 15px;
     box-shadow: 0px 4px 4px 1px #888888;
+}
+@media (max-width: 767px) {
+    .workspace {
+        margin-top: 0;
+    }
 }
 
 
