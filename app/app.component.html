@@ -8,7 +8,7 @@
                  <span *ngIf='!showMenu' class='glyphicon glyphicon-chevron-down'></span>
                  <span *ngIf='showMenu' class='glyphicon glyphicon-chevron-up'></span>
                  </button>
-             <ul *ngIf='showMenu' class='nav navbar-nav'>
+             <ul (click)='toggleMenu()' *ngIf='showMenu' class='nav navbar-nav'>
                 <li class='nav'><a [routerLink]="['Customers']">Customers</a></li>
                 <li class='nav'><a href='http://services.flycleaners.com/Tracker/trucks'>Trucks</a></li>
                 <li class='nav'><a href='http://services.flycleaners.com/Tracker/employees'>Drivers</a></li>

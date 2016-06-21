@@ -31,7 +31,8 @@ export class AppComponent {
     }
 
     toggleMenu(): void {
-        this.showMenu = !this.showMenu;
+        if (window.innerWidth < 992)
+            this.showMenu = !this.showMenu;
     }
 
     closeMenu(): void {
