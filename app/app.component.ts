@@ -31,24 +31,33 @@ export class AppComponent {
     }
 
     toggleMenu(): void {
+console.log("toggle");
         if (window.innerWidth < 992)
             this.showMenu = !this.showMenu;
     }
-
     closeMenu(): void {
+console.log("close");
         this.showMenu = false;
     }
 
+    softCloseMenu() {
+console.log("soft");
+        if (window.innerWidth < 992) this.closeMenu();
+    }
+
     setupMenu(screenWidth: number): void {
+console.log("setup");
         if (screenWidth >= 992) this.showMenu = true;
         else this.showMenu = false;
     }
 
     onResize(event) {
+console.log("resize");
         this.setupMenu(event.target.innerWidth);
     }
 
     ngOnInit(): void {
+console.log("init");
         this.setupMenu(window.innerWidth);
     };
 }
