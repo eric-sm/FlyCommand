@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class CustomerService {
     private _customerUrl = 'http://ec2-52-23-221-11.compute-1.amazonaws.com/FlyCommand/customer';
+    private _customerSearchUrl = 'http://ec2-52-23-221-11.compute-1.amazonaws.com/FlyCommand/customers';
 
     constructor(private _http: Http) {};
 
@@ -18,6 +19,15 @@ export class CustomerService {
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this._handleError);
     };
+
+    public getCustomersBySearch(searchTerm: string): Observable<ICustomer[]> {
+        var customerSearchUrl: string = this._customerSearchUrl + '?json={"searchTerm":"' + searchTerm + '"}';
+        
+        return this._http.get(customerSearchUrl)
+            .map(this._extractSearchData)
+            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .catch(this._handleError);
+    }
 
     private _handleError(error:Response) {
         console.error(error);
@@ -40,5 +50,30 @@ export class CustomerService {
         customer.isFacebookConnected = body.facebook_connect ? true : false;
 
         return customer;
+    }
+
+    private _extractSearchData(response: Response): ICustomer[] {
+        var customers: ICustomer[] = [];
+
+        let customer_list = response.json();
+
+        for (var id in customer_list) {
+            var item = customer_list[id];
+
+            var customer: ICustomer = <ICustomer>{};
+            customer.id = item.id;
+            customer.nameFirst = item.name_first;
+            customer.nameLast = item.name_last;
+            customer.phone = item.phone;
+            customer.addresses = [];
+            customer.appVersion = null;
+            customer.deviceType = null;
+            customer.accountCreated = null;
+            customer.creditBalance = null;
+            customer.isFacebookConnected = null;
+
+            customers.push(customer);
+        }
+        return customers;
     }
 }

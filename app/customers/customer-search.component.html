@@ -4,6 +4,24 @@
         <h3>Search</h3>
         <input [(ngModel)]='searchTerm' (keyup)='runSearch()' id='customer-search-input' type='text' placeholder='By phone number, email, name, or order no.'>
     </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of results">
+                    <td>{{customer.id}}</td>
+                    <td>{{customer.nameFirst}} {{customer.nameLast}}</td>
+                    <td>{{customer.phone}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div id='recently-viewed' class='col-md-3 col-sm-3'>
     <div class='sidebar'>
