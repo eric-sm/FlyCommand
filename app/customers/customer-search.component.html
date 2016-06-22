@@ -23,7 +23,7 @@
                     <td>{{customer.nameFirst}}</td>
                     <td>{{customer.nameLast}}</td>
                     <td>{{customer.email}}</td>
-                    <td class='text-center'>{{customer.phone}}</td>
+                    <td class='text-center'>{{customer.phone | phone }}</td>
                     <td>{{customer.addresses[0].street1}}, {{customer.addresses[0].city}}</td>
                     <td></td>
                 </tr>
