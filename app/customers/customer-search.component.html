@@ -5,19 +5,27 @@
         <input [(ngModel)]='searchTerm' (keyup)='runSearch()' id='customer-search-input' type='text' placeholder='By phone number, email, name, or order no.'>
     </div>
     <div>
-        <table>
+        <table width="100%">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
                     <th>Phone</th>
+                    <th>Primary Address</th>
+                    <th>Recent Orders</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let customer of results">
-                    <td>{{customer.id}}</td>
-                    <td>{{customer.nameFirst}} {{customer.nameLast}}</td>
-                    <td>{{customer.phone}}</td>
+                    <td class='text-center'>{{customer.id}}</td>
+                    <td>{{customer.nameFirst}}</td>
+                    <td>{{customer.nameLast}}</td>
+                    <td>{{customer.email}}</td>
+                    <td class='text-center'>{{customer.phone}}</td>
+                    <td>{{customer.addresses[0].street1}}, {{customer.addresses[0].city}}</td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

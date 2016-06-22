@@ -4,6 +4,7 @@ export interface ICustomer {
     id: number;
     nameFirst: string;
     nameLast: string;
+    email: string; 
     phone: string;
     addresses: IAddress[];
     appVersion: string;

@@ -1,10 +1,12 @@
 import { Component } from 'angular2/core';
 import { CustomerService } from './customer.service';
 import { ICustomer } from './customer';
+import { PhoneNumberFormatPipe } from '../shared/phone-number-format.pipe';
 
 @Component({
     templateUrl: 'app/customers/customer-search.component.html',
     styleUrls: ['app/customers/customer-search.component.css'],
+    pipes: [PhoneNumberFormatPipe],
     bindings: [CustomerService]
 })
 export class CustomerSearchComponent {
