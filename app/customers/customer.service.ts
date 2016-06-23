@@ -58,9 +58,8 @@ export class CustomerService {
 
         let customer_list = response.json();
 
-        for (var id in customer_list) {
-            var item = customer_list[id];
-
+        for (var item of customer_list) {
+            
             var customer: ICustomer = <ICustomer>{};
             customer.id = item.id;
             customer.nameFirst = item.name_first;
