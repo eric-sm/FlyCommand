@@ -1,4 +1,5 @@
 import { Component } from 'angular2/core';
+import { Subscription } from 'rxjs/Subscription';
 import { CustomerService } from './customer.service';
 import { ICustomer } from './customer';
 import { PhoneNumberFormatPipe } from '../shared/phone-number-format.pipe';
@@ -11,14 +12,16 @@ import { PhoneNumberFormatPipe } from '../shared/phone-number-format.pipe';
 })
 export class CustomerSearchComponent {
     searchTerm: string;
+    searchSubscription: Subscription;
     results: ICustomer[];
 
     constructor(private _customerService: CustomerService) {}
 
     runSearch(): void {
-        console.debug(this.searchTerm);
+        // Cancel any prior search
+        if (this.searchSubscription) this.searchSubscription.unsubscribe();
 
-        this._customerService.getCustomersBySearch(this.searchTerm)
+        this.searchSubscription = this._customerService.getCustomersBySearch(this.searchTerm)
             .subscribe(results => (this.results = results)   
         );
 
