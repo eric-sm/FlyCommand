@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let customer of results">
+                <tr *ngFor="let customer of results" [routerLink]="['Customer', {customerId: customer.id}]">
                     <td class='text-center'>{{customer.id}}</td>
                     <td>{{customer.nameFirst}}</td>
                     <td>{{customer.nameLast}}</td>
@@ -35,8 +35,8 @@
     <div class='sidebar'>
         <h3>Recently<br/>Viewed</h3>
         <ol>
-            <li><a href='/customer/356'>Alex Sinelnikov</a></li>
-            <li><a href='/customer/357'>Eric Small</a></li>
+            <li><a [routerLink]="['Customer', {customerId: 356}]">Alex Sinelnikov</a></li>
+            <li><a [routerLink]="['Customer', {customerId: 357}]">Eric Small</a></li>
         </ol>
         <div id='search-recent-searches'>
         <h3 style=''>Recent<br/>Searches</h3>
