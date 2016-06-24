@@ -10,8 +10,7 @@ import { OrderService } from '../order.service';
     templateUrl : 'app/orders/list/order-list.component.html',
     styleUrls: ['app/orders/list/order-list.component.css'],
     pipes: [OrderFilterPipe],
-    directives: [StarComponent, ROUTER_DIRECTIVES],
-    bindings: [OrderService]
+    directives: [StarComponent, ROUTER_DIRECTIVES]
 })
 export class OrderListComponent implements OnInit {
     showPrice: boolean = true;

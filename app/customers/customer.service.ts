@@ -9,8 +9,11 @@ import { Observable } from 'rxjs/Observable';
 export class CustomerService {
     private _customerUrl = 'http://ec2-52-23-221-11.compute-1.amazonaws.com/FlyCommand/customer';
     private _customerSearchUrl = 'http://ec2-52-23-221-11.compute-1.amazonaws.com/FlyCommand/customers';
+    private lastCustomerSearch: string;
+
 
     constructor(private _http: Http) {};
+
 
     public getProfile(customerId: number): Observable<ICustomer> {
         var customerUrl: string = this._customerUrl + '?json={"id":' + customerId + '}';
@@ -21,8 +24,14 @@ export class CustomerService {
             .catch(this._handleError);
     };
 
+    public getLastCustomerSearch(): string {
+        return this.lastCustomerSearch;
+    }
+
     public getCustomersBySearch(searchTerm: string): Observable<ICustomer[]> {
         var customerSearchUrl: string = this._customerSearchUrl + '?json={"searchTerm":"' + searchTerm + '"}';
+
+        this.lastCustomerSearch = searchTerm;
         
         return this._http.get(customerSearchUrl)
             .map(this._extractSearchData)
@@ -87,6 +96,7 @@ export class CustomerService {
 
             customers.push(customer);
         }
+
         return customers;
     }
 }

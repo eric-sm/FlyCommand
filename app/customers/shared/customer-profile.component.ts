@@ -8,8 +8,7 @@ import { IAddress } from '../address';
 @Component({
     selector: 'fcc-customer-profile',
     templateUrl : 'app/customers/shared/customer-profile.component.html',
-    directives: [OrderListComponent],
-    bindings: [CustomerService]
+    directives: [OrderListComponent]
 })
 export class CustomerProfileComponent {
     id: number;
