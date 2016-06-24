@@ -1,4 +1,4 @@
-import { Component, OnInit } from 'angular2/core';
+import { Component, OnInit, Input } from 'angular2/core';
 import { IOrder } from '../order';
 import { ROUTER_DIRECTIVES } from 'angular2/router';
 import { OrderFilterPipe } from './order-filter.pipe';
@@ -13,6 +13,7 @@ import { OrderService } from '../order.service';
     directives: [StarComponent, ROUTER_DIRECTIVES]
 })
 export class OrderListComponent implements OnInit {
+    @Input() customerId: number;
     showPrice: boolean = true;
     listFilter: string;
     orders: IOrder[];
@@ -26,7 +27,7 @@ export class OrderListComponent implements OnInit {
     };
 
     ngOnInit(): void {
-        this._orderService.getOrders(357)
+        this._orderService.getOrders(this.customerId)
             .subscribe(orders => this.orders = orders, error => this.errorMessage = <any>error);
     };
 }

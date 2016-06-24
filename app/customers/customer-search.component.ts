@@ -1,6 +1,6 @@
 import { Component, OnInit } from 'angular2/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ROUTER_DIRECTIVES } from 'angular2/router';
+import { ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
 import { CustomerService } from './customer.service';
 import { ICustomer } from './customer';
 import { PhoneNumberFormatPipe } from '../shared/phone-number-format.pipe';
@@ -8,7 +8,7 @@ import { PhoneNumberFormatPipe } from '../shared/phone-number-format.pipe';
 
 @Component({
     templateUrl: 'app/customers/customer-search.component.html',
-    styleUrls: ['app/customers/customer-search.component.css'],
+    styleUrls: ['app/customers/customer.component.css'],
     pipes: [PhoneNumberFormatPipe],
     directives: [ROUTER_DIRECTIVES]
 })
@@ -17,7 +17,13 @@ export class CustomerSearchComponent {
     searchSubscription: Subscription;
     results: ICustomer[];
 
-    constructor(private _customerService: CustomerService) {}
+
+    constructor(private _customerService: CustomerService, 
+            private _routeParams: RouteParams) {
+
+        
+        // this.runSearch();
+    }
 
     runSearch(): void {
         // Cancel any prior search
@@ -30,8 +36,15 @@ export class CustomerSearchComponent {
         return;
     }
 
+
+    // Run search on screen load either from the URL parameters or the last search, if any
     ngOnInit(): void {
-        this.searchTerm = this._customerService.getLastCustomerSearch();
-        if (this.searchTerm && this.searchTerm.length > 1) this.runSearch();
+        if (this._routeParams.get('searchTerm')) {
+            this.searchTerm = this._routeParams.get('searchTerm');
+            this.runSearch();
+        } else {
+            this.searchTerm = this._customerService.getLastCustomerSearch();
+            if (this.searchTerm && this.searchTerm.length > 1) this.runSearch();
+        }
     }
 }

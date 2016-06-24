@@ -1,9 +1,11 @@
 <div class='row'>
-    <div class='panel panel-primary col-md-4'>
-        <div class='panel-heading'>
-            <h4>{{nameFirst}}<br/>{{nameLast}}</h4>
-        </div>
-        <div class='panel-body'>
+    <div class='col-md-8'>
+        <fcc-order-list [customerId]='id'></fcc-order-list>
+    </div>
+    
+    <div id='recently-viewed' class='col-md-3 col-sm-3'>
+        <div class='sidebar'>
+            <h3>{{nameFirst}}<br/>{{nameLast}}</h3>
             <table>
                 <tr>
                     <td>ID</td>
@@ -37,8 +39,5 @@
             <div>Credit Balance</div>
             <div>Ticket Count</div>
         </div>
-    </div>
-    <div class='panel panel-primary col-md-8'>
-        <fcc-order-list></fcc-order-list>
     </div>
 </div>

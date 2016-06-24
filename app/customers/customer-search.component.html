@@ -41,9 +41,9 @@
         <div id='search-recent-searches'>
         <h3 style=''>Recent<br/>Searches</h3>
         <ol>
-            <li><a href='/customers/3236108559'>3236108559</a></li>
-            <li><a href='/customers/357302'>357302</a></li>
-            <li><a href='/customers/Hudson'>Hudson</a></li>
+            <li><a [routerLink]="['CustomerSearch', {searchTerm: 'eric'}]">eric</a></li>
+            <li><a [routerLink]="['CustomerSearch', {searchTerm: 'eric small'}]">eric small</a></li>
+            <li><a [routerLink]="['CustomerSearch', {searchTerm: 'david'}]">david</a></li>
         </ol>
         </div>
     </div>

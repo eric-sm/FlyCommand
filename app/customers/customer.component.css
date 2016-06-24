@@ -15,12 +15,13 @@
     margin-bottom: 15px;
 }
 .sidebar ol {
-    font-size: small;
     list-style-type: none;
     padding-left: 0;
     margin-bottom: 45px;
 }
 .sidebar ol li {
+    font-size: small;
+    text-align: center;
     padding: 12px 0 0;
 }
 

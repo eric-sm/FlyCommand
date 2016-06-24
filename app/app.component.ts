@@ -18,9 +18,10 @@ import { OrderComponent } from './orders/order.component';
     providers: [OrderService, CustomerService, HTTP_PROVIDERS, ROUTER_PROVIDERS]
 })
 @RouteConfig([
-    {path: '/customers/', name: 'Customers', component: CustomerSearchComponent}, 
-    {path: '/customer/:customerId/', name: 'Customer', component: CustomerProfileComponent}, 
-    {path: '/order/:orderId/', name: 'Order', component: OrderComponent}
+    {path: '/customers', name: 'Customers', component: CustomerSearchComponent}, 
+    {path: '/customer-search/:searchTerm', name: 'CustomerSearch', component: CustomerSearchComponent}, 
+    {path: '/customer/:customerId', name: 'Customer', component: CustomerProfileComponent}, 
+    {path: '/order/:orderId', name: 'Order', component: OrderComponent}
 ])
 export class AppComponent {
     showMenu: boolean = false;
