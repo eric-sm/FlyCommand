@@ -295,6 +295,7 @@ footer .copyright > div {
 .results-body ol {
     list-style-type: none;
     margin-bottom: 0;
+    padding-left: 0;
 }
 .results-body li {
     font-size: 14px;
