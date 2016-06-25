@@ -1,4 +1,5 @@
 import { Injectable } from 'angular2/core';
+import { GlobalService } from '../app.service';
 import { ICustomer } from './customer';
 import { IAddress } from './address';
 import { Http, Response } from 'angular2/http';
@@ -7,12 +8,15 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CustomerService {
-    private _customerUrl = 'http://ec2-52-23-221-11.compute-1.amazonaws.com/FlyCommand/customer';
-    private _customerSearchUrl = 'http://ec2-52-23-221-11.compute-1.amazonaws.com/FlyCommand/customers';
+    private _customerUrl;
+    private _customerSearchUrl;
     private lastCustomerSearch: string;
 
 
-    constructor(private _http: Http) {};
+    constructor(private _http: Http, private _globalService: GlobalService) {
+        this._customerUrl = _globalService.getBaseUrl() + 'customer';
+        this._customerSearchUrl = _globalService.getBaseUrl() + 'customers';
+    };
 
 
     public getProfile(customerId: number): Observable<ICustomer> {

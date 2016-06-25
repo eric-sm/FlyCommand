@@ -3,10 +3,12 @@ import { HTTP_PROVIDERS } from 'angular2/http';
 import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, Router } from 'angular2/router';
 import './rxjs-operators';
 
-import { CustomerProfileComponent } from './customers/shared/customer-profile.component';
-import { CustomerSearchComponent } from './customers/customer-search.component';
+import { GlobalService } from './app.service';
 import { OrderService } from './orders/order.service';
 import { CustomerService } from './customers/customer.service';
+
+import { CustomerProfileComponent } from './customers/shared/customer-profile.component';
+import { CustomerSearchComponent } from './customers/customer-search.component';
 import { OrderListComponent } from './orders/list/order-list.component';
 import { OrderComponent } from './orders/order.component';
 
@@ -15,7 +17,7 @@ import { OrderComponent } from './orders/order.component';
     selector: 'fcc-app',
     templateUrl : 'app/app.component.html',
     directives: [ROUTER_DIRECTIVES],
-    providers: [OrderService, CustomerService, HTTP_PROVIDERS, ROUTER_PROVIDERS]
+    providers: [GlobalService, OrderService, CustomerService, HTTP_PROVIDERS, ROUTER_PROVIDERS]
 })
 @RouteConfig([
     {path: '/customers', name: 'Customers', component: CustomerSearchComponent}, 

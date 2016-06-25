@@ -1,4 +1,5 @@
 import { Injectable } from 'angular2/core';
+import { GlobalService } from '../app.service';
 import { IOrder } from './order';
 import { Http, Response } from 'angular2/http';
 import { Observable } from 'rxjs/Observable';
@@ -6,9 +7,11 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class OrderService {
-    private _ordersUrl = 'http://ec2-52-23-221-11.compute-1.amazonaws.com/FlyCommand/orders';
+    private _ordersUrl;
 
-    constructor(private _http: Http) {};
+    constructor(private _http: Http, private _globalService: GlobalService) {
+        this._ordersUrl = _globalService.getBaseUrl + 'orders';
+    };
 
     public getOrders(customerId: number): Observable<IOrder[]> {
         var ordersUrl: string = this._ordersUrl + '?json={"consumer_id":' + customerId + '}';
