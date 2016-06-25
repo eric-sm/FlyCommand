@@ -4,9 +4,9 @@
         <h3>Search</h3>
         <input [(ngModel)]='searchTerm' (keyup)='runSearch()' id='customer-search-input' type='text' placeholder='By phone number, email, name, or order no.'>
     </div>
-    <div>
+    <div *ngIf='results && results.length'>
         <table width="100%">
-            <thead>
+            <thead class='results-header'>
                 <tr>
                     <th>ID</th>
                     <th>First Name</th>
@@ -17,7 +17,7 @@
                     <th>Recent Orders</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class='results-body'>
                 <tr *ngFor="let customer of results" [routerLink]="['Customer', {customerId: customer.id}]">
                     <td class='text-center'>{{customer.id}}</td>
                     <td>{{customer.nameFirst}}</td>
@@ -30,6 +30,7 @@
             </tbody>
         </table>
     </div>
+    <div *ngIf='!orders || orders.length == 0' class='no-results'>No matches</div>
 </div>
 <div id='recently-viewed' class='col-md-3 col-sm-3'>
     <div class='sidebar'>
@@ -38,13 +39,13 @@
             <li><a [routerLink]="['Customer', {customerId: 356}]">Alex Sinelnikov</a></li>
             <li><a [routerLink]="['Customer', {customerId: 357}]">Eric Small</a></li>
         </ol>
-        <div id='search-recent-searches'>
-        <h3 style=''>Recent<br/>Searches</h3>
-        <ol>
-            <li><a [routerLink]="['CustomerSearch', {searchTerm: 'eric'}]">eric</a></li>
-            <li><a [routerLink]="['CustomerSearch', {searchTerm: 'eric small'}]">eric small</a></li>
-            <li><a [routerLink]="['CustomerSearch', {searchTerm: 'david'}]">david</a></li>
-        </ol>
+        <div id='search-recent-searches' class='subsection'>
+            <h3>Recent<br/>Searches</h3>
+            <ol>
+                <li><a [routerLink]="['CustomerSearch', {searchTerm: 'eric'}]">eric</a></li>
+                <li><a [routerLink]="['CustomerSearch', {searchTerm: 'eric small'}]">eric small</a></li>
+                <li><a [routerLink]="['CustomerSearch', {searchTerm: 'david'}]">david</a></li>
+            </ol>
         </div>
     </div>
 </div>

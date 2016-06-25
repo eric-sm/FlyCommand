@@ -25,39 +25,6 @@
     padding: 12px 0 0;
 }
 
-#search-recent-searches {
-    background-color: #54697a;
-    margin-left: -15px;
-    margin-right: -15px;
-    padding: 15px;
-}
-thead {
-    background-color: #BFCBD7;
-    color: #768897;
-}
-thead tr {
-    height: 30px;
-}
-thead th {
-    border-right: #D2DAE4 1px solid;
-    text-align: center;
-    font-weight: lighter;
-}
-thead th:last-child {
-    border-right: none;
-}
-tbody {
-    background-color: #ECEFF6;
-    color: #768897;
-}
-tbody tr {
-    height: 45px;
-    border-bottom: #D1D5DE 1px solid;
-}
-tbody td {
-    padding-left: 5px;
-}
-
 @media (max-width: 767px) {
     #customer-search-input {
         font-size: medium;
