@@ -8,12 +8,10 @@
             <input type='text' [(ngModel)]='listFilter' />
         </div>
     </div>
-    <button (click)='togglePrice()' class='btn btn-primary'>
-        {{showPrice ? 'Hide' : 'Show'}} price
-    </button>
+    <input type='checkbox' (click)='togglePrice()' class='btn btn-primary'> {{showCancelled ? 'Hide' : 'Show'}} cancelled orders
     <div class='table-responsive' *ngIf='orders && orders.length'>
         <table class='table'>
-            <thead>
+            <thead class='results-header'>
                 <tr>
                     <th>Order #</th>
                     <th>Services</th>
@@ -24,15 +22,33 @@
                     <th>Customer Rating</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class='results-body'>
                 <tr *ngFor='let order of orders | orderFilter: listFilter'>
                     <td><a [routerLink]="['Order', {orderId: order.id}]">{{order.id}}</a></td>
-                    <td>{{order.services}}</td>
-                    <td>{{order.status}}</td>
-                    <td>{{order.pickup }}</td>
-                    <td>{{order.delivery }}</td>
+                    <td>
+                        <ol *ngFor='let service of order.services'>
+                            <li>
+                                {{service.type}}
+                            </li>
+                        </ol>
+                    </td>
+                    <td>
+                        <ol *ngFor='let service of order.services'>
+                            <li>
+                                {{service.status}}
+                            </li>
+                        </ol>
+                    </td>
+                    <td>{{order.pickup_date }}</td>
+                    <td>
+                        <ol *ngFor='let service of order.services'>
+                            <li *ngIf='service.status != "Cancelled"'>
+                                <span>{{service.delivery_date}}</span>
+                            </li>
+                        </ol>
+                    </td>
                     <td>{{order.price | currency: 'USD':true:'1.2-2' }}</td>
-                    <td><ai-star [rating]='order.overallRating'></ai-star></td>
+                    <td class='text-center'><ai-star [rating]='order.overallRating'></ai-star></td>
                 </tr>
             </tbody>
         </table>

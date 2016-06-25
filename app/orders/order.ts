@@ -1,11 +1,10 @@
+import { ISubOrder } from './suborder';
+
 
 export interface IOrder {
     id: number;
-    services: string[];
-    status: string;
-    pickup: string;
-    delivery: string;
-    pickupTruck: string;
+    services: ISubOrder[];
+    pickup_date: string;
     price: number;
     overallRating: number;
 }
