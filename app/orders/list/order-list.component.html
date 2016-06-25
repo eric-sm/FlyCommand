@@ -5,10 +5,10 @@
     <div>
         <div>Order Search:</div>
         <div>
-            <input type='text' [(ngModel)]='listFilter' />
+            <input type='text' [(ngModel)]='orderNumberFilter' />
         </div>
     </div>
-    <input type='checkbox' (click)='togglePrice()' class='btn btn-primary'> {{showCancelled ? 'Hide' : 'Show'}} cancelled orders
+    <input type='checkbox' [(ngModel)]='exposedCancelled' (change)='toggleCancelled()' class='btn btn-primary'> Include cancelled orders
     <div class='table-responsive' *ngIf='orders && orders.length'>
         <table class='table'>
             <thead class='results-header'>
@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody class='results-body'>
-                <tr *ngFor='let order of orders | orderFilter: listFilter'>
+                <tr *ngFor='let order of orders | orderNumberFilter: [orderNumberFilter] | cancelledOrdersFilter: [exposedCancelled.toString()]'>
                     <td><a [routerLink]="['Order', {orderId: order.id}]">{{order.id}}</a></td>
                     <td>
                         <ol *ngFor='let service of order.services'>
@@ -42,7 +42,7 @@
                     <td>{{order.pickup_date }}</td>
                     <td>
                         <ol *ngFor='let service of order.services'>
-                            <li *ngIf='service.status != "Cancelled"'>
+                            <li *ngIf='service.status == "Delivered"'>
                                 <span>{{service.delivery_date}}</span>
                             </li>
                         </ol>

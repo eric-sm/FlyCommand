@@ -2,9 +2,9 @@ import { PipeTransform, Pipe } from 'angular2/core';
 import { IOrder } from '../order';
 
 @Pipe({
-    name: 'orderFilter'
+    name: 'orderNumberFilter'
 })
-export class OrderFilterPipe implements PipeTransform {
+export class OrderNumberFilterPipe implements PipeTransform {
 
     transform(value: IOrder[], args: string[]): IOrder[] {
         let filter: string = args && args[0] ? args[0] : null;
