@@ -33,7 +33,6 @@ export class OrderService {
             order.id = item.id;
             order.pickup_date = new Date(item.pickup_date);
             order.overallRating = item.avg_rating;
-            order.price = null;
 
             // Process the suborders/services
             order.services = [];
