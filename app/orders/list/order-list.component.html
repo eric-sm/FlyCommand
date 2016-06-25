@@ -39,11 +39,11 @@
                             </li>
                         </ol>
                     </td>
-                    <td>{{order.pickup_date }}</td>
+                    <td class='text-nowrap'>{{order.pickup_date | date: "MMM/dd/yyy hh:mm" }}</td>
                     <td>
                         <ol *ngFor='let service of order.services'>
                             <li *ngIf='service.status == "Delivered"'>
-                                <span>{{service.delivery_date}}</span>
+                                <span class='text-nowrap'>{{service.delivery_date | date: "MMM/dd/yyy hh:mm" }}</span>
                             </li>
                         </ol>
                     </td>

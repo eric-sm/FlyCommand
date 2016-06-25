@@ -31,7 +31,7 @@ export class OrderService {
         for (var item of body) {
             var order: IOrder = <IOrder>{};
             order.id = item.id;
-            order.pickup_date = item.pickup_date;
+            order.pickup_date = new Date(item.pickup_date);
             order.overallRating = item.avg_rating;
             order.price = null;
 
@@ -43,7 +43,7 @@ export class OrderService {
                     suborder.id = service.id;
                     suborder.type = service.type;
                     suborder.status = service.status;
-                    suborder.delivery_date = service.delivery_date;
+                    suborder.delivery_date = new Date(service.delivery_date);
 
                     order.services.push(suborder);
                 }
