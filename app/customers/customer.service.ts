@@ -20,7 +20,7 @@ export class CustomerService {
 
 
     public getProfile(customerId: number): Observable<ICustomer> {
-        var customerUrl: string = this._customerUrl + '?json={"id":' + customerId + '}';
+        var customerUrl: string = this._customerUrl + '?json={"consumer_id":' + customerId + '}';
 
         return this._http.get(customerUrl)
             .map(this._extractProfileData);
