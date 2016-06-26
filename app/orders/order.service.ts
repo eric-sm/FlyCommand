@@ -31,7 +31,7 @@ export class OrderService {
 
     private _extractOrder(response: Response): IOrder {
         let body = response.json();
-        
+
         var order: IOrder = <IOrder>{};
         order.id = body.id;
 
@@ -57,7 +57,8 @@ export class OrderService {
                     suborder.id = service.id;
                     suborder.type = service.type;
                     suborder.status = service.status;
-                    suborder.delivery_date = new Date(service.delivery_date);
+                    if (service.delivery_date && service.delivery_date.length > 0) 
+                            suborder.delivery_date = new Date(service.delivery_date);
 
                     order.services.push(suborder);
                 }
