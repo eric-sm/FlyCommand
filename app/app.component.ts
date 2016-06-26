@@ -1,6 +1,5 @@
 import { Component, OnInit } from 'angular2/core';
-import { HTTP_PROVIDERS } from 'angular2/http';
-import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig, Router } from 'angular2/router';
+import { ROUTER_DIRECTIVES, RouteConfig, Router } from 'angular2/router';
 import './rxjs-operators';
 
 import { GlobalService } from './app.service';
@@ -17,7 +16,7 @@ import { OrderComponent } from './orders/order.component';
     selector: 'fcc-app',
     templateUrl : 'app/app.component.html',
     directives: [ROUTER_DIRECTIVES],
-    providers: [GlobalService, OrderService, CustomerService, HTTP_PROVIDERS, ROUTER_PROVIDERS]
+    providers: [GlobalService, OrderService, CustomerService]
 })
 @RouteConfig([
     {path: '/customers', name: 'Customers', component: CustomerSearchComponent}, 
