@@ -10,18 +10,35 @@ import { Observable } from 'rxjs/Observable';
 export class OrderService {
     private _ordersUrl;
 
-    constructor(private _http: Http, private _globalService: GlobalService) {
-        this._ordersUrl = _globalService.getBaseUrl() + 'orders';
-    };
+    constructor(private _http: Http, private _globalService: GlobalService) {};
 
     public getOrders(customerId: number): Observable<IOrder[]> {
-        var ordersUrl: string = this._ordersUrl + '?json={"consumer_id":' + customerId + '}';
+        var ordersUrl: string = this._globalService.getBaseUrl() + 'orders';
+        ordersUrl += '?json={"consumer_id":' + customerId + '}';
 
         return this._http.get(ordersUrl)
-            .map(this._extractData);
+            .map(this._extractOrderList);
     };
+
+    public getOrder(customerId: number, orderId: number) {
+        var orderUrl: string = this._globalService.getBaseUrl() + 'order';
+        orderUrl += '?json={"consumer_id":' + customerId + ', "order_id":' + orderId + '}';
+
+        return this._http.get(orderUrl)
+            .map(this._extractOrder);
+    }
+
+
+    private _extractOrder(response: Response): IOrder {
+        let body = response.json();
+        
+        var order: IOrder = <IOrder>{};
+        order.id = body.id;
+
+        return order;
+    }
     
-    private _extractData(response: Response): IOrder[] {
+    private _extractOrderList(response: Response): IOrder[] {
         let body = response.json();
         var orders: IOrder[] = [];
 
