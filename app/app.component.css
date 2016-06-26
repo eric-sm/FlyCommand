@@ -266,6 +266,9 @@ footer .copyright > div {
 .results {
     margin-top: 15px;
 }
+.results table {
+    margin-bottom: 0;
+}
 .results-header, .no-results {
     background-color: #BFCBD7;
     color: #768897;
