@@ -1,5 +1,5 @@
 import { bootstrap } from 'angular2/platform/browser';
-import { provide } from "angular2/core";
+import { provide, enableProdMode } from "angular2/core";
 import { HTTP_PROVIDERS, Http, XHRBackend, RequestOptions } from 'angular2/http';
 import { ROUTER_PROVIDERS } from 'angular2/router';
 
@@ -18,5 +18,5 @@ export const FC_HTTP_PROVIDERS = [
     })
 ];
 
-
+enableProdMode();
 bootstrap(AppComponent, [FC_HTTP_PROVIDERS, ROUTER_PROVIDERS]);
