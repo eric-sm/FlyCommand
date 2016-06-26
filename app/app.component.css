@@ -263,6 +263,9 @@ footer .copyright > div {
 
 
 /* No results on searches */
+.results {
+    margin-top: 15px;
+}
 .results-header, .no-results {
     background-color: #BFCBD7;
     color: #768897;

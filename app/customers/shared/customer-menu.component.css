@@ -1,0 +1,48 @@
+/* Side menu */
+.sidemenu {
+    background-color: #54697a;
+    height: 100vh;
+    margin: 15px -15px 0 0;
+    padding: 0;
+    color: white;
+}
+.sidemenu button {
+    background-color: #54697a;
+    font-size: smaller;
+    font-weight: lighter;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-bottom: #758da5 1px solid;
+    border-top: #758da5 1px solid;
+    padding: 0;
+}
+.sidemenu button.main {
+    height: 60px;
+}
+.sidemenu button.main {
+    
+    margin-top: 15px;
+}
+.sidemenu .submenu button {
+    text-align: left;
+    height: 30px;    
+    padding-left: 25%;
+}
+.sidemenu div.submenu button:first-child {
+    border-bottom: #758da5 1px solid;
+}
+.sidemenu button:hover {
+    background-color: #BFCBD7;
+}
+.sidemenu button.active {
+    background-color: #758da5;
+}
+.sidemenu input[type=text] {
+    width: 100%;
+    outline: none;
+    color: #54697a;
+}
+.glyphicon {
+    margin-right: 15px;
+}

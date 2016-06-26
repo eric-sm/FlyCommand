@@ -1,20 +1,20 @@
-<div class='panel-body'>
+<div class='results'>
     <div class='table-responsive' style='box-shadow: 0px 4px 4px 1px #888888;' *ngIf='orders && orders.length'>
         <table class='table'>
             <thead class='results-header'>
                 <tr>
-                    <th><span class='hidden-xs'>Order</span> #</th>
+                    <th> #</th>
                     <th>Services</th>
                     <th>Status</th>
                     <th class='hidden-xs'>PickUp</th>
                     <th class='hidden-xs'>Delivery</th>
-                    <th class='hidden-xs hidden-sm'>Customer Rating</th>
+                    <th class='hidden-xs hidden-sm'>Rating</th>
                 </tr>
             </thead>
             <tbody class='results-body'>
                 <tr *ngFor='let order of orders
-                            | orderNumberFilter: [orderNumberFilter] 
-                            | cancelledOrdersFilter: [exposedCancelled.toString()]'
+                            | orderNumberFilter: [filterOrderNumber] 
+                            | cancelledOrdersFilter: [showCancelled.toString()]'
                             [routerLink]="['Order', {customerId: customerId, orderId: order.id}]">
 
                     <!-- Order ID -->
@@ -88,12 +88,4 @@
         </table>
     </div>
     <div *ngIf='!orders || orders.length == 0'>No orders match</div>
-
-    <div>
-        <div>Order Search:</div>
-        <div>
-            <input type='text' [(ngModel)]='orderNumberFilter' />
-        </div>
-    </div>
-    <input type='checkbox' [(ngModel)]='exposedCancelled' (change)='toggleCancelled()' class='btn btn-primary'> Include cancelled orders
 </div>

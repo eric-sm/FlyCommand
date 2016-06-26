@@ -15,17 +15,14 @@ import { OrderService } from '../order.service';
 })
 export class OrderListComponent implements OnInit {
     @Input() customerId: number;
-    showCancelled: boolean = true;
-    exposedCancelled: boolean = false;
+    @Input() showCancelled: boolean;
+    @Input() filterOrderNumber: number;
     orderNumberFilter: string;
     orders: IOrder[];
     errorMessage: string;
 
     constructor(private _orderService: OrderService) {}
 
-    toggleCancelled(): void {
-        this.showCancelled = !this.showCancelled;
-    };
 
     ngOnInit(): void {
         this._orderService.getOrders(this.customerId)
