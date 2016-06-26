@@ -1,18 +1,16 @@
-import { Component, OnInit } from 'angular2/core';
+import { Component, OnInit, Input } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 import { CustomerService } from '../customer.service';
-import { OrderListComponent } from '../../orders/list/order-list.component';
 import { ICustomer } from '../customer';
 import { IAddress } from '../address';
 
 @Component({
     selector: 'fcc-customer-profile',
     templateUrl : 'app/customers/shared/customer-profile.component.html',
-    styleUrls: ['app/customers/customer.component.css'],
-    directives: [OrderListComponent]
+    styleUrls: ['app/customers/customer.component.css']
 })
 export class CustomerProfileComponent {
-    id: number;
+    @Input() customerId: number;
     nameFirst: string;
     nameLast: string;
     phone: string;
@@ -24,17 +22,11 @@ export class CustomerProfileComponent {
     isFacebookConnected: boolean;
 
 
-    constructor(private _customerService: CustomerService, 
-            private _routeParams: RouteParams) {
-
-        let id = +this._routeParams.get('customerId');
-        this.id = id;
-    }
+    constructor(private _customerService: CustomerService) {}
 
     ngOnInit(): void {
-        this._customerService.getProfile(this.id)
+        this._customerService.getProfile(this.customerId)
             .subscribe(customer => (
-                this.id = customer.id, 
                 this.nameFirst = customer.nameFirst,
                 this.nameLast = customer.nameLast,
                 this.phone = customer.phone,

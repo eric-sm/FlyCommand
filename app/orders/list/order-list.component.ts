@@ -21,8 +21,7 @@ export class OrderListComponent implements OnInit {
     orders: IOrder[];
     errorMessage: string;
 
-    constructor(private _orderService: OrderService) {
-    }
+    constructor(private _orderService: OrderService) {}
 
     toggleCancelled(): void {
         this.showCancelled = !this.showCancelled;
