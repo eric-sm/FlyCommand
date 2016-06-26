@@ -22,8 +22,10 @@
     height: 60px;
 }
 .sidemenu button.main {
-    
     margin-top: 15px;
+}
+.sidemenu button.main:first-child {
+    margin-top: 0;
 }
 .sidemenu .submenu button {
     font-size: 10px;
