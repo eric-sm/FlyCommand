@@ -8,7 +8,7 @@
             --><span *ngIf='orderNumberFilter'>: {{orderNumberFilter}}
             <span (click)='clearOrderFilter()' class="pull-right glyphicon glyphicon-trash"></span>
         </span></button>
-        <input #inputNumberFilter *ngIf='showOrderFilter' type='text' (keyup)='sendOrderFilter()' (blur)='turnOffOrderFilter()' [(ngModel)]='orderNumberFilter' />
+        <input #inputNumberFilter *ngIf='showOrderFilter' type='text' placeholder='Order #' (keyup)='sendOrderFilter()' (blur)='turnOffOrderFilter()' [(ngModel)]='orderNumberFilter' />
         
         <button (click)='toggleCancelled()'>{{showCancelled ? 'Hide' : 'Show'}} Cancelled</button>
     </div>
