@@ -13,8 +13,6 @@ export class CustomerComponent {
     customerId: number;
 
     constructor(private _routeParams: RouteParams) {
-
-        let customerId = +this._routeParams.get('customerId');
-        this.customerId = customerId;
+        this.customerId = +this._routeParams.get('customerId');
     }
 }

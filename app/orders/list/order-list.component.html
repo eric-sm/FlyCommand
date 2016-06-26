@@ -15,7 +15,7 @@
                 <tr *ngFor='let order of orders
                             | orderNumberFilter: [orderNumberFilter] 
                             | cancelledOrdersFilter: [exposedCancelled.toString()]'
-                            [routerLink]="['Order', {orderId: order.id}]">
+                            [routerLink]="['Order', {customerId: customerId, orderId: order.id}]">
 
                     <!-- Order ID -->
                     <td class='text-center'>

@@ -22,7 +22,7 @@ import { OrderComponent } from './orders/order.component';
     {path: '/customers', name: 'Customers', component: CustomerSearchComponent}, 
     {path: '/customer-search/:searchTerm', name: 'CustomerSearch', component: CustomerSearchComponent}, 
     {path: '/customer/:customerId', name: 'Customer', component: CustomerComponent}, 
-    {path: '/order/:orderId', name: 'Order', component: OrderComponent}
+    {path: '/order/:customerId/:orderId', name: 'Order', component: OrderComponent}
 ])
 export class AppComponent {
     showMenu: boolean = false;

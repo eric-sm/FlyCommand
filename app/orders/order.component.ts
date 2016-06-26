@@ -1,14 +1,17 @@
 import { Component } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
+import { CustomerProfileComponent } from '../customers/shared/customer-profile.component';
 
 @Component({
     templateUrl : 'app/orders/order.component.html',
+    directives: [CustomerProfileComponent]
 })
 export class OrderComponent {
-    id: number = 377590;
+    customerId: number;
+    orderId: number;
 
     constructor(private _routeParams: RouteParams) {
-        let id = +this._routeParams.get('orderId');
-        this.id = id;
+        this.customerId = +this._routeParams.get('customerId');
+        this.orderId = +this._routeParams.get('orderId');
     }
 }
