@@ -27,11 +27,6 @@ import { OrderComponent } from './orders/order.component';
 export class AppComponent {
     showMenu: boolean = false;
 
-    constructor(private _router: Router) {}
-
-    home(): void {
-        this._router.navigate(['Start']);
-    }
 
     toggleMenu(): void {
         if (window.innerWidth < 992)
