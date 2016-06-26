@@ -19,4 +19,4 @@ export const FC_HTTP_PROVIDERS = [
 ];
 
 
-bootstrap(AppComponent, [FC_HTTP_PROVIDERS, ROUTER_PROVIDERS] );
+bootstrap(AppComponent, [FC_HTTP_PROVIDERS, ROUTER_PROVIDERS]);
