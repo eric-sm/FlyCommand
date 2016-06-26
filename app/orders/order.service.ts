@@ -18,9 +18,7 @@ export class OrderService {
         var ordersUrl: string = this._ordersUrl + '?json={"consumer_id":' + customerId + '}';
 
         return this._http.get(ordersUrl)
-            .map(this._extractData)
-            .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this._handleError);
+            .map(this._extractData);
     };
     
     private _extractData(response: Response): IOrder[] {
@@ -52,10 +50,4 @@ export class OrderService {
         
         return orders;
     }
-
-    private _handleError(error:Response) {
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server Error');
-    }
-
 }

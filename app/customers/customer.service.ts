@@ -23,9 +23,7 @@ export class CustomerService {
         var customerUrl: string = this._customerUrl + '?json={"id":' + customerId + '}';
 
         return this._http.get(customerUrl)
-            .map(this._extractProfileData)
-            //.do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this._handleError);
+            .map(this._extractProfileData);
     };
 
     public getLastCustomerSearch(): string {
@@ -38,14 +36,7 @@ export class CustomerService {
         this.lastCustomerSearch = searchTerm;
         
         return this._http.get(customerSearchUrl)
-            .map(this._extractSearchData)
-            //.do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this._handleError);
-    }
-
-    private _handleError(error:Response) {
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server Error');
+            .map(this._extractSearchData);
     }
 
     private _extractProfileData(response: Response): ICustomer {
