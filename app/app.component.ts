@@ -20,8 +20,7 @@ import { OrderComponent } from './orders/order.component';
 @RouteConfig([
     {path: '/customers', name: 'Customers', component: CustomerSearchComponent}, 
     {path: '/customer-search/:searchTerm', name: 'CustomerSearch', component: CustomerSearchComponent}, 
-    {path: '/customer/:customerId', name: 'Customer', component: CustomerComponent}, 
-    {path: '/order/:customerId/:orderId', name: 'Order', component: OrderComponent}
+    {path: '/customer/:customerId', name: 'Customer', component: CustomerComponent}
 ])
 export class AppComponent {
     showMenu: boolean = false;
