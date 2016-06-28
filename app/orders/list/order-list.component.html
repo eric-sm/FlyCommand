@@ -15,7 +15,7 @@
                 <tr *ngFor='let order of orders
                             | orderNumberFilter: [filterOrderNumber] 
                             | cancelledOrdersFilter: [showCancelled.toString()]'
-                            [routerLink]="['Order', {customerId: customerId, orderId: order.id}]">
+                        (click)='selectOrder(order)'>
 
                     <!-- Order ID -->
                     <td class='text-center'>

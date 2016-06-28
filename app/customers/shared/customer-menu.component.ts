@@ -9,9 +9,9 @@ import { Component, Input, Output, EventEmitter, ViewChild,
 export class CustomerMenuComponent implements AfterViewChecked {
     @ViewChild('inputNumberFilter') inputNumberFilter: ElementRef;
     @Input() customerId: number;
-    @Input() orderId: number;
     @Input() activeSection: string;
     @Input() activeSubsection: string;
+    @Output() notifyButtonPressed: EventEmitter<string> = new EventEmitter<string>();
     @Output() notifyShowCancelled: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() notifyOrderFilter: EventEmitter<string> = new EventEmitter<string>();
     showCancelled: boolean = false;
@@ -23,6 +23,10 @@ export class CustomerMenuComponent implements AfterViewChecked {
     toggleCancelled(): void {
         this.showCancelled = !this.showCancelled;
         this.notifyShowCancelled.emit(this.showCancelled);
+    }
+
+    showOrderList(): void {
+        this.notifyButtonPressed.emit("OrderList");
     }
 
     turnOnOrderFilter() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from 'angular2/core';
+import { Component, OnInit, Input, Output, EventEmitter } from 'angular2/core';
 import { IOrder } from '../order';
 import { ROUTER_DIRECTIVES } from 'angular2/router';
 import { OrderNumberFilterPipe } from './order-number-filter.pipe';
@@ -17,12 +17,16 @@ export class CustomerOrderListComponent implements OnInit {
     @Input() customerId: number;
     @Input() showCancelled: boolean;
     @Input() filterOrderNumber: number;
+    @Output() notifySelectedOrder: EventEmitter<IOrder> = new EventEmitter<IOrder>();
     orderNumberFilter: string;
     orders: IOrder[];
     errorMessage: string;
 
     constructor(private _orderService: OrderService) {}
 
+    selectOrder(order: IOrder): void {
+        this.notifySelectedOrder.emit(order);
+    }
 
     ngOnInit(): void {
         this._orderService.getOrders(this.customerId)

@@ -2,26 +2,29 @@
     <div class='col-lg-1 col-md-2 col-sm-1 hidden-xs'>
         <fcc-customer-menu 
             [customerId]='customerId' 
-            [orderId]='orderId'
             [activeSection]='activeSection'
             [activeSubsection]='activeSubsection'
+            (notifyButtonPressed)='menuButtonPressed($event)'
             (notifyShowCancelled)='toggleCancelledOrders($event)'
-            (notifyOrderFilter)='filterOrders($event)'>
-        </fcc-customer-menu>
+            (notifyOrderFilter)='filterOrders($event)'></fcc-customer-menu>
     </div>
 
-    <div class='col-lg-8 col-md-7 col-sm-8'>
+    <div class='col-lg-8 col-md-7 col-sm-8' *ngIf='showOrderList'>
         <fcc-customer-order-list 
             [customerId]='customerId' 
             [showCancelled]='showCancelledOrders'
-            [filterOrderNumber]='filterOrderNumber'>
-        </fcc-customer-order-list>
+            [filterOrderNumber]='filterOrderNumber'
+            (notifySelectedOrder)='showSelectedOrder($event)'></fcc-customer-order-list>
     </div>
 
-    <div class='col-lg-8 col-md-7 col-sm-8'>
-        <fcc-customer-order [orderId]='customerId'></fcc-customer-order>
+    
+    <div class='col-lg-8 col-md-7 col-sm-8' *ngIf='!showOrderList'>
+        <fcc-customer-order 
+            [customerId]='customerId' 
+            [order]='order'></fcc-customer-order>
     </div>
     
+
     <div class='col-md-3 col-sm-3'>
         <fcc-customer-profile [customerId]='customerId'></fcc-customer-profile>
     </div>

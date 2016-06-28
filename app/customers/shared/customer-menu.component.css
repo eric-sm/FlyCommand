@@ -36,11 +36,14 @@
 .sidemenu div.submenu button:first-child {
     border-bottom: #758da5 1px solid;
 }
-.sidemenu button:hover {
-    background-color: #BFCBD7;
-}
 .sidemenu button.active {
     background-color: #758da5;
+}
+.sidemenu .submenu button.active {
+    background-color: #BFCBD7;
+}
+.sidemenu button:hover {
+    background-color: #BFCBD7;
 }
 .sidemenu input[type=text] {
     font-size: 14px;

@@ -1,5 +1,5 @@
 <div class='sidemenu'>
-    <button class='main active text-uppercase'>
+    <button class='main text-uppercase' [class.active]='activeSection=="Orders"' (click)='showOrderList()'>
         <span class='visible-lg visible-md'><span class="glyphicon glyphicon-tags"></span> Orders</span>
         <span class='hidden-lg hidden-md'>Orders</span>
     </button>
@@ -13,8 +13,8 @@
             
             <button (click)='toggleCancelled()'>{{showCancelled ? 'Hide' : 'Show'}} Cancelled</button>
         </div>
-        <div *ngIf='activeSubsection!="OrderList"'>
-            <button>Services</button>
+        <div *ngIf='!(activeSubsection=="OrderList")'>
+            <button [class.active]='activeSubsection=="Services"'>Services</button>
             <button>Events</button>
             <button>Preferences</button>
             <button>Receipt</button>
