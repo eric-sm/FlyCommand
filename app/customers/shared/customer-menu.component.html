@@ -22,19 +22,19 @@
         </div>
     </div>
     
-    <button class='main text-uppercase' [class.active]='activeSection=="Profile"'>
+    <button class='main text-uppercase' [class.active]='activeSection=="Profile"' (click)='buttonPressed("Profile", "Addresses")'>
         <span class='visible-lg visible-md'><span class="glyphicon glyphicon-user"></span> Profile</span>
         <span class='hidden-lg hidden-md'>Profile</span>
     </button>
     <div class='submenu' *ngIf='activeSection=="Profile"'>
-        <button [class.active]='activeSubsection=="Addresses"'>Addresses</button>
-        <button [class.active]='activeSubsection=="Preferences"'>Preferences</button>
-        <button [class.active]='activeSubsection=="Credits"'>Credit History</button>
-        <button [class.active]='activeSubsection=="Notes"'>Internal Notes</button>
-        <button [class.active]='activeSubsection=="Tickets"'>Zendesk Tickets</button>
-        <button [class.active]='activeSubsection=="Appboy"'>Appboy Messages</button>
-        <button [class.active]='activeSubsection=="Stripe"'>Stripe Payments</button>
-        <button [class.active]='activeSubsection=="Chat"'>Chat Mentions</button>
-        <button [class.active]='activeSubsection=="Usage"'>App Usage</button>
+        <button [class.active]='activeSubsection=="Addresses"' (click)='buttonPressed("Profile", "Addresses")'>Addresses</button>
+        <button [class.active]='activeSubsection=="Preferences"' (click)='buttonPressed("Profile", "Preferences")'>Preferences</button>
+        <button [class.active]='activeSubsection=="Credits"' (click)='buttonPressed("Profile", "Credits")'>Credit History</button>
+        <button [class.active]='activeSubsection=="Notes"' (click)='buttonPressed("Profile", "Notes")'>Internal Notes</button>
+        <button [class.active]='activeSubsection=="Tickets"' (click)='buttonPressed("Profile", "Tickets")'>Zendesk Tickets</button>
+        <button [class.active]='activeSubsection=="Appboy"' (click)='buttonPressed("Profile", "Appboy")'>Appboy Messages</button>
+        <button [class.active]='activeSubsection=="Stripe"' (click)='buttonPressed("Profile", "Stripe")'>Stripe Payments</button>
+        <button [class.active]='activeSubsection=="Chat"' (click)='buttonPressed("Profile", "Chat")'>Chat Mentions</button>
+        <button [class.active]='activeSubsection=="Usage"' (click)='buttonPressed("Profile", "Usage")'>App Usage</button>
     </div>
 </div>

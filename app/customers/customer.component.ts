@@ -21,7 +21,6 @@ export class CustomerComponent {
     activeSection: string = 'Orders';
     activeSubsection: string = 'OrderList';
     showCancelledOrders: boolean = false;
-    showOrderList: boolean = true;
     filterOrderNumber: number;
 
     constructor(private _routeParams: RouteParams) {
@@ -38,14 +37,10 @@ export class CustomerComponent {
 
     menuButtonPressed(buttonPressed: ISection): void {
         this.setActiveSection(buttonPressed.section, buttonPressed.subsection);
-        
-        if (buttonPressed.subsection == 'OrderList') this.showOrderList = true;
-        else this.showOrderList = false;
     }
 
     showSelectedOrder(order: IOrder): void {
         this.setActiveSection('Orders', 'Services');
-        this.showOrderList = false;
         this.order = order;
     }
 

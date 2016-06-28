@@ -26,6 +26,7 @@ export class CustomerMenuComponent implements AfterViewChecked {
     }
 
     buttonPressed(section: string, subsection: string): void {
+        console.debug("Customer menu button pressed: " + section + ": " + subsection);
         this.notifyButtonPressed.emit({'section': section, 'subsection': subsection});
     }
 

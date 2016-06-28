@@ -9,7 +9,7 @@
             (notifyOrderFilter)='filterOrders($event)'></fcc-customer-menu>
     </div>
 
-    <div class='col-lg-8 col-md-7 col-sm-8' *ngIf='showOrderList'>
+    <div class='col-lg-8 col-md-7 col-sm-8' *ngIf='activeSection=="Orders" && activeSubsection=="OrderList"'>
         <fcc-customer-order-list 
             [customerId]='customerId' 
             [showCancelled]='showCancelledOrders'
@@ -18,7 +18,7 @@
     </div>
 
     
-    <div class='col-lg-8 col-md-7 col-sm-8' *ngIf='!showOrderList'>
+    <div class='col-lg-8 col-md-7 col-sm-8' *ngIf='activeSection=="Orders" && activeSubsection!="OrderList"'>
         <fcc-customer-order 
             [customerId]='customerId' 
             [order]='order'
