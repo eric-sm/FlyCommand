@@ -11,6 +11,8 @@ export class CustomerService {
     private _customerUrl;
     private _customerSearchUrl;
     private lastCustomerSearch: string;
+    private recentSearches: string[] = [];
+    private recentChoices: ICustomer[] = [];
 
 
     constructor(private _http: Http, private _globalService: GlobalService) {
@@ -23,11 +25,44 @@ export class CustomerService {
         var customerUrl: string = this._customerUrl + '?json={"consumer_id":' + customerId + '}';
 
         return this._http.get(customerUrl)
-            .map(this._extractProfileData);
+            .map(this._extractProfileData)
+            .do(customer => this.addRecentChoice(customer));
     };
 
     public getLastCustomerSearch(): string {
         return this.lastCustomerSearch;
+    }
+
+    public getRecentSearches(): string[] {
+        return this.recentSearches;
+    }
+
+    public getRecentChoices(): ICustomer[] {
+        return this.recentChoices;
+    }
+
+    public addRecentSearch(recentTerm: string): void {
+        if (recentTerm && recentTerm.length > 1) {
+            for(var i=0; i < this.recentSearches.length; i++) { 
+                if (this.recentSearches[i].startsWith(recentTerm)) return;
+            }
+            this.recentSearches.push(recentTerm);
+            if (this.recentSearches.length > 5) this.recentSearches.shift();
+        }
+    }
+
+    public addRecentChoice(recentCustomerViewed: ICustomer): void {
+        if (recentCustomerViewed) {
+            for (var i=0; i < this.recentChoices.length; i++) {
+                if (recentCustomerViewed.id == this.recentChoices[i].id) return;
+            }
+            this.recentChoices.push(recentCustomerViewed);
+            if (this.recentChoices.length > 5) this.recentChoices.shift();
+        }
+        
+        // While we're logging that a profile is being viewed, this is a good 
+        // time to save the last search
+        this.addRecentSearch(this.getLastCustomerSearch());
     }
 
     public getCustomersBySearch(searchTerm: string): Observable<ICustomer[]> {

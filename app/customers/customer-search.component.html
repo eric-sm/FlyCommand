@@ -34,17 +34,16 @@
 </div>
 <div id='recently-viewed' class='col-md-3 col-sm-3'>
     <div class='sidebar'>
-        <h3>Recently<br/>Viewed</h3>
-        <ol>
-            <li><a [routerLink]="['Customer', {customerId: 356}]">Alex Sinelnikov</a></li>
-            <li><a [routerLink]="['Customer', {customerId: 357}]">Eric Small</a></li>
-        </ol>
-        <div id='search-recent-searches' class='subsection'>
+        <div *ngIf='recentlyViewed && recentlyViewed.length'>
+            <h3>Recently<br/>Viewed</h3>
+            <ol>
+                <li *ngFor="let customer of recentlyViewed"><a [routerLink]="['Customer', {customerId: customer.id}]">{{customer.nameFirst}} {{customer.nameLast}}</a></li>
+            </ol>
+        </div>
+        <div id='search-recent-searches' class='subsection' *ngIf='recentSearches && recentSearches.length'>
             <h3>Recent<br/>Searches</h3>
             <ol>
-                <li><a [routerLink]="['CustomerSearch', {searchTerm: 'eric'}]">eric</a></li>
-                <li><a [routerLink]="['CustomerSearch', {searchTerm: 'eric small'}]">eric small</a></li>
-                <li><a [routerLink]="['CustomerSearch', {searchTerm: 'david'}]">david</a></li>
+                <li *ngFor="let searchTerm of recentSearches"><a [routerLink]="['CustomerSearch', {searchTerm: searchTerm}]">{{searchTerm}}</a></li>
             </ol>
         </div>
     </div>

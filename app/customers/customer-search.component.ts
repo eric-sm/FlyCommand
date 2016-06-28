@@ -16,13 +16,12 @@ export class CustomerSearchComponent {
     searchTerm: string;
     searchSubscription: Subscription;
     results: ICustomer[];
+    recentlyViewed: ICustomer[];
+    recentSearches: string[];
 
 
     constructor(private _customerService: CustomerService, 
             private _routeParams: RouteParams) {
-
-        
-        // this.runSearch();
     }
 
     runSearch(): void {
@@ -46,5 +45,8 @@ export class CustomerSearchComponent {
             this.searchTerm = this._customerService.getLastCustomerSearch();
             if (this.searchTerm && this.searchTerm.length > 1) this.runSearch();
         }
+
+        this.recentlyViewed = this._customerService.getRecentChoices();
+        this.recentSearches = this._customerService.getRecentSearches();
     }
 }
