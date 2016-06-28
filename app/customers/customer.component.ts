@@ -1,10 +1,11 @@
 import { Component } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 import { IOrder } from '../orders/order';
-import { CustomerOrderListComponent } from '../orders/list/order-list.component';
 import { CustomerMenuComponent } from './sidebars/customer-menu.component';
 import { CustomerProfileSidebarComponent } from './sidebars/customer-profile-sidebar.component';
+import { CustomerOrderListComponent } from '../orders/list/order-list.component';
 import { OrderComponent } from '../orders/order.component';
+import { CustomerProfileComponent } from './customer-profile.component';
 import { ISection } from './sidebars/customer-menu.component';
 
 
@@ -13,7 +14,7 @@ import { ISection } from './sidebars/customer-menu.component';
     templateUrl : 'app/customers/customer.component.html',
     styleUrls: ['app/customers/customer.component.css'],
     directives: [CustomerMenuComponent, CustomerProfileSidebarComponent, CustomerOrderListComponent, 
-        OrderComponent]
+        OrderComponent, CustomerProfileComponent]
 })
 export class CustomerComponent {
     customerId: number;

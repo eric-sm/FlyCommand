@@ -24,6 +24,13 @@
             [order]='order'
             [orderPart]='activeSubsection'></fcc-customer-order>
     </div>
+
+    
+    <div class='col-lg-8 col-md-7 col-sm-8' *ngIf='activeSection=="Profile"'>
+        <fcc-customer-profile 
+            [customerId]='customerId' 
+            [profilePart]='activeSubsection'></fcc-customer-profile>
+    </div>
     
 
     <div class='col-md-3 col-sm-3'>
