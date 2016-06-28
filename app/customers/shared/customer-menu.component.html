@@ -3,18 +3,38 @@
         <span class='visible-lg visible-md'><span class="glyphicon glyphicon-tags"></span> Orders</span>
         <span class='hidden-lg hidden-md'>Orders</span>
     </button>
-    <div class='submenu'>
-        <button *ngIf='!showOrderFilter' (click)='turnOnOrderFilter()'>Filter<!--
-            --><span *ngIf='orderNumberFilter'>: {{orderNumberFilter}}
-            <span (click)='clearOrderFilter()' class="pull-right glyphicon glyphicon-trash"></span>
-        </span></button>
-        <input #inputNumberFilter *ngIf='showOrderFilter' type='text' placeholder='Order #' (keyup)='sendOrderFilter()' (blur)='turnOffOrderFilter()' [(ngModel)]='orderNumberFilter' />
-        
-        <button (click)='toggleCancelled()'>{{showCancelled ? 'Hide' : 'Show'}} Cancelled</button>
+    <div class='submenu' *ngIf='activeSection=="Orders"'>
+        <div *ngIf='activeSubsection=="OrderList"'>
+            <button *ngIf='!showOrderFilter' (click)='turnOnOrderFilter()'>Filter<!--
+                --><span *ngIf='orderNumberFilter'>: {{orderNumberFilter}}
+                <span (click)='clearOrderFilter()' class="pull-right glyphicon glyphicon-trash"></span>
+            </span></button>
+            <input #inputNumberFilter *ngIf='showOrderFilter' type='text' placeholder='Order #' (keyup)='sendOrderFilter()' (blur)='turnOffOrderFilter()' [(ngModel)]='orderNumberFilter' />
+            
+            <button (click)='toggleCancelled()'>{{showCancelled ? 'Hide' : 'Show'}} Cancelled</button>
+        </div>
+        <div *ngIf='activeSubsection!="OrderList"'>
+            <button>Services</button>
+            <button>Events</button>
+            <button>Preferences</button>
+            <button>Receipt</button>
+            <button>Feedback</button>
+        </div>
     </div>
     
     <button class='main text-uppercase'>
         <span class='visible-lg visible-md'><span class="glyphicon glyphicon-user"></span> Profile</span>
         <span class='hidden-lg hidden-md'>Profile</span>
     </button>
+    <div class='submenu' *ngIf='activeSection=="Profile"'>
+        <button>Addresses</button>
+        <button>Preferences</button>
+        <button>Credit History</button>
+        <button>Internal Notes</button>
+        <button>Zendesk Tickets</button>
+        <button>Appboy Messages</button>
+        <button>Stripe Payments</button>
+        <button>Chat Mentions</button>
+        <button>App Usage</button>
+    </div>
 </div>

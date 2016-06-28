@@ -7,13 +7,13 @@ import { StarComponent } from '../../shared/star.component';
 import { OrderService } from '../order.service';
 
 @Component({
-    selector: 'fcc-order-list',
+    selector: 'fcc-customer-order-list',
     templateUrl : 'app/orders/list/order-list.component.html',
     styleUrls: ['app/orders/list/order-list.component.css'],
     pipes: [OrderNumberFilterPipe, CancelledOrdersFilterPipe],
     directives: [StarComponent, ROUTER_DIRECTIVES]
 })
-export class OrderListComponent implements OnInit {
+export class CustomerOrderListComponent implements OnInit {
     @Input() customerId: number;
     @Input() showCancelled: boolean;
     @Input() filterOrderNumber: number;

@@ -10,6 +10,8 @@ export class CustomerMenuComponent implements AfterViewChecked {
     @ViewChild('inputNumberFilter') inputNumberFilter: ElementRef;
     @Input() customerId: number;
     @Input() orderId: number;
+    @Input() activeSection: string;
+    @Input() activeSubsection: string;
     @Output() notifyShowCancelled: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() notifyOrderFilter: EventEmitter<string> = new EventEmitter<string>();
     showCancelled: boolean = false;

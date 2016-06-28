@@ -3,15 +3,23 @@
         <fcc-customer-menu 
             [customerId]='customerId' 
             [orderId]='orderId'
+            [activeSection]='activeSection'
+            [activeSubsection]='activeSubsection'
             (notifyShowCancelled)='toggleCancelledOrders($event)'
-            (notifyOrderFilter)='filterOrders($event)'></fcc-customer-menu>
+            (notifyOrderFilter)='filterOrders($event)'>
+        </fcc-customer-menu>
     </div>
 
     <div class='col-lg-8 col-md-7 col-sm-8'>
-        <fcc-order-list 
+        <fcc-customer-order-list 
             [customerId]='customerId' 
             [showCancelled]='showCancelledOrders'
-            [filterOrderNumber]='filterOrderNumber'></fcc-order-list>
+            [filterOrderNumber]='filterOrderNumber'>
+        </fcc-customer-order-list>
+    </div>
+
+    <div class='col-lg-8 col-md-7 col-sm-8'>
+        <fcc-customer-order [orderId]='customerId'></fcc-customer-order>
     </div>
     
     <div class='col-md-3 col-sm-3'>
