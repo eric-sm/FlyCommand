@@ -8,7 +8,6 @@ import { CustomerService } from './customers/customer.service';
 
 import { CustomerSearchComponent } from './customers/customer-search.component';
 import { CustomerComponent } from './customers/customer.component';
-import { OrderListComponent } from './orders/list/order-list.component';
 import { OrderComponent } from './orders/order.component';
 
 
