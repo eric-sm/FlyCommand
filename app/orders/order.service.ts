@@ -4,6 +4,7 @@ import { IOrder } from './order';
 import { ISubOrder } from './suborder'
 import { Http, Response } from 'angular2/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 
 @Injectable()
@@ -13,17 +14,24 @@ export class OrderService {
 
     constructor(private _http: Http, private _globalService: GlobalService) {};
 
-    public getOrders(customerId: number): Observable<IOrder[]> {
-        var ordersUrl: string = this._globalService.getBaseUrl() + 'orders';
+    public getOrders(customerId: number, skipCache: boolean = false): Observable<IOrder[]> {
+        var ordersUrl: string = this._globalService.baseUrl + 'orders';
         ordersUrl += '?json={"consumer_id":' + customerId + '}';
 
-        return this._http.get(ordersUrl)
+        if (!skipCache 
+                && this._orderListCache[customerId]
+                && (new Date().getTime() - this._orderListCache[customerId].cacheTime) < this._globalService.cacheTimeCustomerOrderList) {
+            console.log('Using cache for order list for customer ' + customerId);
+            console.log('Cache expires in ' + (this._globalService.cacheTimeCustomerOrderList - (new Date().getTime() - this._orderListCache[customerId].cacheTime)) + 'ms');
+            return Observable.of(this._orderListCache[customerId].orders);
+        }
+        else return this._http.get(ordersUrl)
             .map(this._extractOrderList)
-            .do(orders => this._orderListCache[customerId] = orders);
+            .do(orders => this._orderListCache[customerId] = {'orders': orders, 'cacheTime': new Date().getTime()});
     };
 
     public getOrder(customerId: number, orderId: number) {
-        var orderUrl: string = this._globalService.getBaseUrl() + 'order';
+        var orderUrl: string = this._globalService.baseUrl + 'order';
         orderUrl += '?json={"consumer_id":' + customerId + ', "order_id":' + orderId + '}';
 
         return this._http.get(orderUrl)
