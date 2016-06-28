@@ -5,6 +5,7 @@ import { CustomerOrderListComponent } from '../orders/list/order-list.component'
 import { CustomerMenuComponent } from './shared/customer-menu.component';
 import { CustomerProfileComponent } from './shared/customer-profile.component';
 import { OrderComponent } from '../orders/order.component';
+import { ISection } from './shared/customer-menu.component';
 
 
 @Component({
@@ -35,16 +36,11 @@ export class CustomerComponent {
         this.filterOrderNumber = parseInt(orderNumber);
     }
 
-    menuButtonPressed(buttonPressed: string): void {
-        switch (buttonPressed) {
-            case "OrderList":
-                this.setActiveSection('Orders', 'OrderList');
-                this.showOrderList = true;
-                break;
+    menuButtonPressed(buttonPressed: ISection): void {
+        this.setActiveSection(buttonPressed.section, buttonPressed.subsection);
         
-            default:
-                break;
-        }
+        if (buttonPressed.subsection == 'OrderList') this.showOrderList = true;
+        else this.showOrderList = false;
     }
 
     showSelectedOrder(order: IOrder): void {

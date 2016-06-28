@@ -11,7 +11,7 @@ export class CustomerMenuComponent implements AfterViewChecked {
     @Input() customerId: number;
     @Input() activeSection: string;
     @Input() activeSubsection: string;
-    @Output() notifyButtonPressed: EventEmitter<string> = new EventEmitter<string>();
+    @Output() notifyButtonPressed: EventEmitter<ISection> = new EventEmitter<ISection>();
     @Output() notifyShowCancelled: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() notifyOrderFilter: EventEmitter<string> = new EventEmitter<string>();
     showCancelled: boolean = false;
@@ -25,8 +25,8 @@ export class CustomerMenuComponent implements AfterViewChecked {
         this.notifyShowCancelled.emit(this.showCancelled);
     }
 
-    showOrderList(): void {
-        this.notifyButtonPressed.emit("OrderList");
+    buttonPressed(section: string, subsection: string): void {
+        this.notifyButtonPressed.emit({'section': section, 'subsection': subsection});
     }
 
     turnOnOrderFilter() {
@@ -53,4 +53,9 @@ export class CustomerMenuComponent implements AfterViewChecked {
             this._renderer.invokeElementMethod(this.inputNumberFilter.nativeElement, 'focus', []);
         }
     }
+}
+
+export interface ISection {
+    section: string;
+    subsection: string;
 }

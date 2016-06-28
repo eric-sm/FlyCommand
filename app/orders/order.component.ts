@@ -13,6 +13,7 @@ import { CustomerProfileComponent } from '../customers/shared/customer-profile.c
 export class OrderComponent implements OnInit {
     @Input() customerId: number;
     @Input() order: IOrder = <IOrder>{};
+    @Input() orderPart: string;
 
     constructor(private _orderService: OrderService, private _routeParams: RouteParams) {}
 
