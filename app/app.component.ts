@@ -2,8 +2,6 @@ import { Component, OnInit } from 'angular2/core';
 import { ROUTER_DIRECTIVES, RouteConfig, Router } from 'angular2/router';
 import './rxjs-operators';
 
-import { CustomerRoutes } from './customers/customer.routes';
-
 import { GlobalService } from './app.service';
 import { OrderService } from './orders/order.service';
 import { CustomerService } from './customers/customer.service';
