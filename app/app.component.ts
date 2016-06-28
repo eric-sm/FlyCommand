@@ -8,6 +8,9 @@ import { GlobalService } from './app.service';
 import { OrderService } from './orders/order.service';
 import { CustomerService } from './customers/customer.service';
 
+import { CustomerComponent } from './customers/customer.component';
+import { CustomerSearchComponent } from './customers/customer-search.component';
+
 
 @Component({
     selector: 'fcc-app',
@@ -16,7 +19,9 @@ import { CustomerService } from './customers/customer.service';
     providers: [GlobalService, OrderService, CustomerService]
 })
 @RouteConfig([
-    ...CustomerRoutes
+    {path: 'customers', name: 'Customers', component: CustomerSearchComponent}, 
+    {path: 'customer-search/:searchTerm', name: 'CustomerSearch', component: CustomerSearchComponent}, 
+    {path: 'customer/:customerId', name: 'Customer', component: CustomerComponent}
 ])
 export class AppComponent {
     showMenu: boolean = false;
