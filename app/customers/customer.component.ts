@@ -33,7 +33,7 @@ export class CustomerComponent {
     }
 
     filterOrders(orderNumber: string): void {
-        this.filterOrderNumber = parseInt(orderNumber);
+        this.filterOrderNumber = +orderNumber;
     }
 
     menuButtonPressed(buttonPressed: ISection): void {
