@@ -2,13 +2,13 @@ import { Component, OnInit, Input } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 import { IOrder } from './order';
 import { OrderService } from './order.service';
-import { CustomerProfileComponent } from '../customers/shared/customer-profile.component';
+import { CustomerProfileSidebarComponent } from '../customers/sidebars/customer-profile-sidebar.component';
 
 @Component({
     selector: 'fcc-customer-order',
     templateUrl : 'app/orders/order.component.html',
     styleUrls: ['app/orders/order.component.css'],
-    directives: [CustomerProfileComponent]
+    directives: [CustomerProfileSidebarComponent]
 })
 export class OrderComponent implements OnInit {
     @Input() customerId: number;

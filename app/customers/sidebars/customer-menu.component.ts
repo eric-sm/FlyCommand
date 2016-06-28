@@ -3,8 +3,8 @@ import { Component, Input, Output, EventEmitter, ViewChild,
 
 @Component({
     selector: 'fcc-customer-menu',
-    templateUrl : 'app/customers/shared/customer-menu.component.html',
-    styleUrls: ['app/customers/shared/customer-menu.component.css']
+    templateUrl : 'app/customers/sidebars/customer-menu.component.html',
+    styleUrls: ['app/customers/sidebars/customer-menu.component.css']
 })
 export class CustomerMenuComponent implements AfterViewChecked {
     @ViewChild('inputNumberFilter') inputNumberFilter: ElementRef;

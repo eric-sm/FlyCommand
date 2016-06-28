@@ -2,17 +2,17 @@ import { Component } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 import { IOrder } from '../orders/order';
 import { CustomerOrderListComponent } from '../orders/list/order-list.component';
-import { CustomerMenuComponent } from './shared/customer-menu.component';
-import { CustomerProfileComponent } from './shared/customer-profile.component';
+import { CustomerMenuComponent } from './sidebars/customer-menu.component';
+import { CustomerProfileSidebarComponent } from './sidebars/customer-profile-sidebar.component';
 import { OrderComponent } from '../orders/order.component';
-import { ISection } from './shared/customer-menu.component';
+import { ISection } from './sidebars/customer-menu.component';
 
 
 @Component({
     selector: 'fcc-customer',
     templateUrl : 'app/customers/customer.component.html',
     styleUrls: ['app/customers/customer.component.css'],
-    directives: [CustomerMenuComponent, CustomerProfileComponent, CustomerOrderListComponent, 
+    directives: [CustomerMenuComponent, CustomerProfileSidebarComponent, CustomerOrderListComponent, 
         OrderComponent]
 })
 export class CustomerComponent {

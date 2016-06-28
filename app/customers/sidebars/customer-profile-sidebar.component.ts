@@ -5,11 +5,11 @@ import { ICustomer } from '../customer';
 import { IAddress } from '../address';
 
 @Component({
-    selector: 'fcc-customer-profile',
-    templateUrl : 'app/customers/shared/customer-profile.component.html',
+    selector: 'fcc-customer-profile-sidebar',
+    templateUrl : 'app/customers/sidebars/customer-profile-sidebar.component.html',
     styleUrls: ['app/customers/customer.component.css']
 })
-export class CustomerProfileComponent {
+export class CustomerProfileSidebarComponent {
     @Input() customerId: number;
     nameFirst: string;
     nameLast: string;

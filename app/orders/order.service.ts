@@ -21,8 +21,8 @@ export class OrderService {
         if (!skipCache 
                 && this._orderListCache[customerId]
                 && (new Date().getTime() - this._orderListCache[customerId].cacheTime) < this._globalService.cacheTimeCustomerOrderList) {
-            console.log('Using cache for order list for customer ' + customerId);
-            console.log('Cache expires in ' + (this._globalService.cacheTimeCustomerOrderList - (new Date().getTime() - this._orderListCache[customerId].cacheTime)) + 'ms');
+            console.debug('Using cache for order list for customer ' + customerId);
+            console.debug('Cache expires in ' + (this._globalService.cacheTimeCustomerOrderList - (new Date().getTime() - this._orderListCache[customerId].cacheTime)) + 'ms');
             return Observable.of(this._orderListCache[customerId].orders);
         }
         else return this._http.get(ordersUrl)
