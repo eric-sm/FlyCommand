@@ -100,9 +100,6 @@ footer.navbar-default .navbar-nav > li > a:visited {
     padding: 10px 0;
     text-align: center;
 }
-footer.navbar-default .navbar-nav > li > a:hover {
-    font-weight: bold;
-}
 footer .nav {
     position: relative;
     top: 2px;
