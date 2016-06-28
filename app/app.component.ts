@@ -2,13 +2,11 @@ import { Component, OnInit } from 'angular2/core';
 import { ROUTER_DIRECTIVES, RouteConfig, Router } from 'angular2/router';
 import './rxjs-operators';
 
+import { CustomerRoutes } from './customers/customer.routes';
+
 import { GlobalService } from './app.service';
 import { OrderService } from './orders/order.service';
 import { CustomerService } from './customers/customer.service';
-
-import { CustomerSearchComponent } from './customers/customer-search.component';
-import { CustomerComponent } from './customers/customer.component';
-import { OrderComponent } from './orders/order.component';
 
 
 @Component({
@@ -18,9 +16,7 @@ import { OrderComponent } from './orders/order.component';
     providers: [GlobalService, OrderService, CustomerService]
 })
 @RouteConfig([
-    {path: 'customers', name: 'Customers', component: CustomerSearchComponent}, 
-    {path: 'customer-search/:searchTerm', name: 'CustomerSearch', component: CustomerSearchComponent}, 
-    {path: 'customer/:customerId', name: 'Customer', component: CustomerComponent}
+    ...CustomerRoutes
 ])
 export class AppComponent {
     showMenu: boolean = false;

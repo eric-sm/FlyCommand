@@ -1,5 +1,5 @@
 import { Component } from 'angular2/core';
-import { RouteParams } from 'angular2/router';
+import { ROUTER_DIRECTIVES, RouteConfig, Router,RouteParams } from 'angular2/router';
 import { IOrder } from '../orders/order';
 import { CustomerMenuComponent } from './sidebars/customer-menu.component';
 import { CustomerProfileSidebarComponent } from './sidebars/customer-profile-sidebar.component';
@@ -13,7 +13,7 @@ import { ISection } from './sidebars/customer-menu.component';
     selector: 'fcc-customer',
     templateUrl : 'app/customers/customer.component.html',
     styleUrls: ['app/customers/customer.component.css'],
-    directives: [CustomerMenuComponent, CustomerProfileSidebarComponent, CustomerOrderListComponent, 
+    directives: [ROUTER_DIRECTIVES, CustomerMenuComponent, CustomerProfileSidebarComponent, CustomerOrderListComponent, 
         OrderComponent, CustomerProfileComponent]
 })
 export class CustomerComponent {
