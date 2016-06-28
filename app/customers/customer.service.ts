@@ -18,6 +18,12 @@ export class CustomerService {
     constructor(private _http: Http, private _globalService: GlobalService) {
         this._customerUrl = _globalService.getBaseUrl() + 'customer';
         this._customerSearchUrl = _globalService.getBaseUrl() + 'customers';
+
+        // Load history into recent searches and profile views from local storage
+        if (localStorage.getItem('recentSearches'))
+                this.recentSearches = <any>JSON.parse(localStorage.getItem('recentSearches'));
+        if (localStorage.getItem('recentChoices')) 
+                this.recentChoices = <any>JSON.parse(localStorage.getItem('recentChoices'));
     };
 
 
@@ -49,6 +55,9 @@ export class CustomerService {
             this.recentSearches.push(recentTerm);
             if (this.recentSearches.length > 5) this.recentSearches.shift();
         }
+
+        // Save in persistent storage
+        localStorage.setItem('recentSearches', JSON.stringify(this.recentSearches));
     }
 
     public addRecentChoice(recentCustomerViewed: ICustomer): void {
@@ -63,12 +72,15 @@ export class CustomerService {
         // While we're logging that a profile is being viewed, this is a good 
         // time to save the last search
         this.addRecentSearch(this.getLastCustomerSearch());
+
+        // Save in persistent storage
+        localStorage.setItem('recentChoices', JSON.stringify(this.recentChoices));
     }
 
     public getCustomersBySearch(searchTerm: string): Observable<ICustomer[]> {
         var customerSearchUrl: string = this._customerSearchUrl + '?json={"searchTerm":"' + searchTerm + '"}';
 
-        this.lastCustomerSearch = searchTerm;
+        this.lastCustomerSearch = searchTerm;    
         
         return this._http.get(customerSearchUrl)
             .map(this._extractSearchData);
