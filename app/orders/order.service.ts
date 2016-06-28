@@ -8,7 +8,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class OrderService {
-    private _ordersUrl;
+    private _ordersUrl: string;
+    private _orderListCache = [];
 
     constructor(private _http: Http, private _globalService: GlobalService) {};
 
@@ -17,7 +18,8 @@ export class OrderService {
         ordersUrl += '?json={"consumer_id":' + customerId + '}';
 
         return this._http.get(ordersUrl)
-            .map(this._extractOrderList);
+            .map(this._extractOrderList)
+            .do(orders => this._orderListCache[customerId] = orders);
     };
 
     public getOrder(customerId: number, orderId: number) {
