@@ -15,26 +15,26 @@
         </div>
         <div *ngIf='!(activeSubsection=="OrderList")'>
             <button [class.active]='activeSubsection=="Services"'>Services</button>
-            <button>Events</button>
-            <button>Preferences</button>
-            <button>Receipt</button>
-            <button>Feedback</button>
+            <button [class.active]='activeSubsection=="Events"'>Events</button>
+            <button [class.active]='activeSubsection=="Preferences"'>Preferences</button>
+            <button [class.active]='activeSubsection=="Receipt"'>Receipt</button>
+            <button [class.active]='activeSubsection=="Feedback"'>Feedback</button>
         </div>
     </div>
     
-    <button class='main text-uppercase'>
+    <button class='main text-uppercase' [class.active]='activeSection=="Profile"'>
         <span class='visible-lg visible-md'><span class="glyphicon glyphicon-user"></span> Profile</span>
         <span class='hidden-lg hidden-md'>Profile</span>
     </button>
     <div class='submenu' *ngIf='activeSection=="Profile"'>
-        <button>Addresses</button>
-        <button>Preferences</button>
-        <button>Credit History</button>
-        <button>Internal Notes</button>
-        <button>Zendesk Tickets</button>
-        <button>Appboy Messages</button>
-        <button>Stripe Payments</button>
-        <button>Chat Mentions</button>
-        <button>App Usage</button>
+        <button [class.active]='activeSubsection=="Addresses"'>Addresses</button>
+        <button [class.active]='activeSubsection=="Preferences"'>Preferences</button>
+        <button [class.active]='activeSubsection=="Credits"'>Credit History</button>
+        <button [class.active]='activeSubsection=="Notes"'>Internal Notes</button>
+        <button [class.active]='activeSubsection=="Tickets"'>Zendesk Tickets</button>
+        <button [class.active]='activeSubsection=="Appboy"'>Appboy Messages</button>
+        <button [class.active]='activeSubsection=="Stripe"'>Stripe Payments</button>
+        <button [class.active]='activeSubsection=="Chat"'>Chat Mentions</button>
+        <button [class.active]='activeSubsection=="Usage"'>App Usage</button>
     </div>
 </div>
