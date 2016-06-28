@@ -4,3 +4,6 @@
 div {
     cursor: pointer;
 }
+.results-body td {
+    padding: 12px;
+}
