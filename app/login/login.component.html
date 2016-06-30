@@ -1,0 +1,8 @@
+<div *ngIf='!loggedIn'>
+    <input type='text' [(ngModel)]='username'>
+    <input type='password' [(ngModel)]='password'>
+    <input type='submit' (click)='submit()'>
+</div>
+<div *ngIf='loggedIn'>
+    Welcome!
+</div>

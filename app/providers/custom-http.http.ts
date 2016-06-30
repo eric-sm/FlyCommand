@@ -5,25 +5,22 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CustomHttp {
-    private _token: string = '0c514dd7b7e8fa4d62283491574d359ea730cdaf'; // TOOD remove default
-    private _tokenOwner: string = 'eric@flycleaners.com'; // TODO: remove default
+    private _token: string;
+    private _tokenOwner: string;
 
 
     constructor(private _http: Http) {}
+   
 
     public setToken(token: string, tokenOwner: string): void {
         this._token = token;
         this._tokenOwner = tokenOwner;
     }
 
-    public unsetToken(): void {
-        this._token = '';
-        this._tokenOwner = '';
-    }
-
     private _handleError(error: any) {
-        // Handle a 401 Unauthorized by heading over to the login page
-        if (error.status == 401) window.location.href = '/login';
+        // Handle a 401 Unauthorized by heading over to the login page.
+        var baseHref = document.getElementsByTagName('base')[0].href
+        if (error.status == 401) window.location.href = baseHref + 'login';
 
         return error;
     }

@@ -29,24 +29,6 @@ export class OrderService {
             .map(this._extractOrderList)
             .do(orders => this._orderListCache[customerId] = {'orders': orders, 'cacheTime': new Date().getTime()});
     };
-
-    public getOrder(customerId: number, orderId: number) {
-        var orderUrl: string = this._globalService.baseUrl + 'order';
-        orderUrl += '?json={"consumer_id":' + customerId + ', "order_id":' + orderId + '}';
-
-        return this._http.get(orderUrl)
-            .map(this._extractOrder);
-    }
-
-
-    private _extractOrder(response: Response): IOrder {
-        let body = response.json();
-
-        var order: IOrder = <IOrder>{};
-        order.id = body.id;
-
-        return order;
-    }
     
     private _extractOrderList(response: Response): IOrder[] {
         let body = response.json();
