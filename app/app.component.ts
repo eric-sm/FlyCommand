@@ -6,6 +6,7 @@ import { GlobalService } from './app.service';
 import { OrderService } from './orders/order.service';
 import { CustomerService } from './customers/customer.service';
 
+import { LoginComponent } from './login/login.component';
 import { CustomerComponent } from './customers/customer.component';
 import { CustomerSearchComponent } from './customers/customer-search.component';
 
@@ -17,6 +18,7 @@ import { CustomerSearchComponent } from './customers/customer-search.component';
     providers: [GlobalService, OrderService, CustomerService]
 })
 @RouteConfig([
+    {path: 'login', name: 'Login', component: LoginComponent}, 
     {path: 'customers', name: 'Customers', component: CustomerSearchComponent}, 
     {path: 'customer-search/:searchTerm', name: 'CustomerSearch', component: CustomerSearchComponent}, 
     {path: 'customer/:customerId', name: 'Customer', component: CustomerComponent}

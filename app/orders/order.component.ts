@@ -13,4 +13,6 @@ export class OrderComponent {
     @Input() customerId: number;
     @Input() order: IOrder = <IOrder>{};
     @Input() orderPart: string;
+
+    constructor(private _routeParams: RouteParams) {}
 }
