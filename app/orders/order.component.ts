@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from 'angular2/core';
+import { Component, Input } from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 import { IOrder } from './order';
 import { OrderService } from './order.service';
@@ -8,15 +8,10 @@ import { OrderService } from './order.service';
     templateUrl : 'app/orders/order.component.html',
     styleUrls: ['app/orders/order.component.css']
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent {
     @Input() customerId: number;
     @Input() order: IOrder = <IOrder>{};
     @Input() orderPart: string;
 
-    constructor(private _orderService: OrderService, private _routeParams: RouteParams) {}
-
-    ngOnInit(): void {
-        this._orderService.getOrder(this.customerId, this.order.id)
-            .subscribe(order => this.order = order);
-    };
+    constructor(private _routeParams: RouteParams) {}
 }
