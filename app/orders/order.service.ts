@@ -16,7 +16,7 @@ export class OrderService {
     constructor(private _http: Http, private _globalService: GlobalService) {};
 
     public getOrders(customerId: number, skipCache: boolean = false): Observable<IOrder[]> {
-        var ordersUrl: string = this._globalService.baseUrl + 'orders';
+        var ordersUrl: string = this._globalService.flyCommandUrl + 'orders';
         ordersUrl += '?json={"consumer_id":' + customerId + '}';
 
         if (!skipCache 
@@ -63,7 +63,7 @@ export class OrderService {
     }    
 
     public getOrderServices(orderId: number): Observable<IOrderService[]> {
-        var orderUrl: string = this._globalService.baseUrl + 'order_services';
+        var orderUrl: string = this._globalService.flyCommandUrl + 'order_services';
         orderUrl += '?json={"order_id":' + orderId + '}';
 
         return this._http.get(orderUrl)

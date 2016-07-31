@@ -16,8 +16,8 @@ export class CustomerService {
 
 
     constructor(private _http: Http, private _globalService: GlobalService) {
-        this._customerUrl = _globalService.baseUrl + 'customer';
-        this._customerSearchUrl = _globalService.baseUrl + 'customers';
+        this._customerUrl = _globalService.flyCommandUrl + 'customer';
+        this._customerSearchUrl = _globalService.flyCommandUrl + 'customers';
 
         // Load history into recent searches and profile views from local storage
         if (localStorage.getItem('recentSearches'))

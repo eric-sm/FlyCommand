@@ -3,6 +3,7 @@ import { Injectable } from 'angular2/core';
 
 @Injectable()
 export class GlobalService {
-    public baseUrl: string = 'http://ec2-52-23-221-11.compute-1.amazonaws.com/FlyCommand/';
+    public baseUrl: string = 'http://ec2-54-174-5-54.compute-1.amazonaws.com/';
+    public flyCommandUrl: string = this.baseUrl + 'FlyCommand/';
     public cacheTimeCustomerOrderList: number = 18000;
 }

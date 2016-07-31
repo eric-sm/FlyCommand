@@ -1,4 +1,5 @@
 import { Component, Output } from 'angular2/core';
+import { GlobalService } from '../app.service';
 import {Http, Headers, Response, RequestOptions} from 'angular2/http';
 import { CustomHttp } from '../providers/custom-http.http';
 
@@ -12,15 +13,15 @@ export class LoginComponent {
     @Output() loggedIn: boolean = false;
     _token: string;
 
-    constructor(private _http: Http) {}
+    constructor(private _http: Http, private _globalService: GlobalService) {}
 
     submit() {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         let options = new RequestOptions({ headers: headers });
         
-        this._http.post('http://ec2-52-23-221-11.compute-1.amazonaws.com/account/entry/', 
-                JSON.stringify({'email': this.username, 'password': this.password, 'device_id': this._createGuid()}), options)
+        let loginUrl = this._globalService.baseUrl + 'account/entry/';
+        this._http.post(loginUrl, JSON.stringify({'email': this.username, 'password': this.password, 'device_id': this._createGuid()}), options)
             .map((response: Response) => response.json())
             .subscribe(token_info => (
                 this._token = token_info.access_token, 
