@@ -1,5 +1,17 @@
 <div class='order-detail'>
         Order details go here: {{order.id}}
-        <fcc-order-services
+        <fcc-order-services *ngIf='orderPart=="Services"'
                 [order]='order'></fcc-order-services>
+                
+        <fcc-order-events *ngIf='orderPart=="Events"'
+                [order]='order'></fcc-order-events>
+                
+        <fcc-order-preferences *ngIf='orderPart=="Preferences"'
+                [order]='order'></fcc-order-preferences>
+                
+        <fcc-order-receipt *ngIf='orderPart=="Receipt"'
+                [order]='order'></fcc-order-receipt>
+                
+        <fcc-order-feedback *ngIf='orderPart=="Feedback"'
+                [order]='order'></fcc-order-feedback>
 </div>
