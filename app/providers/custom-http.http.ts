@@ -9,12 +9,19 @@ export class CustomHttp {
     private _tokenOwner: string;
 
 
-    constructor(private _http: Http) {}
-   
+    constructor(private _http: Http) {
+        // Local the authorization tokens from persistent storage if available
+        this._token = <any>JSON.parse(localStorage.getItem('authToken'));
+        this._tokenOwner = <any>JSON.parse(localStorage.getItem('authTokenOwner'));
+    }
 
     public setToken(token: string, tokenOwner: string): void {
         this._token = token;
         this._tokenOwner = tokenOwner;
+
+        // Save in persistent storage for app reloads
+        localStorage.setItem('authToken', JSON.stringify(token));
+        localStorage.setItem('authTokenOwner', JSON.stringify(tokenOwner));
     }
 
     private _handleError(error: any) {
