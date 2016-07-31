@@ -73,28 +73,6 @@ export class OrderService {
     private _extractOrderServices(response: Response): IOrderService[] {
         let body = response.json();
         var services: IOrderService[] = [];
-//TODO: Structure this the way it's useful
-        for (var suborder in body) {
-            var orderService = <any>{};
-            orderService.bags = [];
-
-            for (var item in body[suborder]) {
-                var serviceItem = <any>{};
-                orderService[item] = serviceItem;
-                serviceItem.type = body[suborder][item].item_type;
-
-                for (var subitem in body[suborder][item]) {
-                    var subItem = <any>{};
-                    if (Number.isInteger(+subitem)) {
-                        subItem.type = body[suborder][item][subitem].item_type;
-                    }
-                    serviceItem (subItem);
-                }
-            }
-
-console.log(orderService);
-            services.push(orderService);
-        }
 
         return services;
     }

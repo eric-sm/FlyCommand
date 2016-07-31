@@ -1,6 +1,87 @@
-Services
-<br>
-<br>
-<ul>
-    <!-- li *ngFor='service of services'>{{service.suborder_id}}</li -->
-    </ul>
+<div class='results'>
+    <div class='table-responsive' style='box-shadow: 0px 4px 4px 1px #888888;'>
+        <table class='table'>
+            <thead class='results-header'>
+                <tr>
+                    <th>#</th>
+                    <th>Services</th>
+                    <th>Status</th>
+                    <th class='hidden-xs'>PickUp</th>
+                    <th class='hidden-xs'>Delivery</th>
+                    <th class='hidden-xs hidden-sm'>Rating</th>
+                </tr>
+            </thead>
+            <tbody class='results-body'>
+                <tr>
+
+                    <!-- Order ID -->
+                    <td class='text-center'>
+                        {{order.id}}
+                    </td>
+
+                    <!-- Services -->
+                    <td>
+                        <ol *ngFor='let service of order.services'>
+                            <li>
+                                {{service.type}}
+                            </li>
+                        </ol>
+                    </td>
+
+                    <!-- Status (and Pickup/Delivery for XS screens) -->
+                    <td>
+                        <ol *ngFor='let service of order.services; let i = index'>
+                            <li>
+                                {{service.status}}
+                            </li>
+                        </ol>
+                        <ol *ngFor='let service of order.services; let i = index' class='visible-xs'>
+                            <li>
+                                <div *ngIf='i == 0' >P/U: {{order.pickup_date | date: "M/dd/yy" }}</div>
+                                <span>
+                                    <span *ngIf='service.type == "Laundry"'>L/D:</span>
+                                    <span *ngIf='service.type == "Dry Cleaning"'>DC/D:</span>
+                                    {{service.delivery_date | date: "M/dd/yy" }}
+                                </span>
+                            </li>
+                        </ol>
+                    </td>
+
+                    <!-- Pickup -->
+                    <td class='hidden-xs'>
+                        <span class='hidden-sm'>
+                            <div style='display: inline-block'>{{order.pickup_date | date: "MMM/dd/yyy" }}</div>
+                            <div style='display: inline-block'>{{order.pickup_date | date: "hh:mm" }}</div>
+                        </span>
+                        <span class='visible-sm'>
+                            <div style='display: inline-block'>{{order.pickup_date | date: "M/dd/yy" }}</div>
+                        </span>
+                    </td>
+
+                    <!-- Delivery -->
+                    <td class='hidden-xs'>
+                        <ol *ngFor='let service of order.services'>
+                            <li *ngIf='service.status.includes("Delivered") || service.status.includes("Out for Delivery") || service.status.includes("Delivery Scheduled")'>
+                                <span class='hidden-sm'>
+                                    <div class='text-nowrap'>
+                                        <span *ngIf='order.services.length > 1 && service.type == "Laundry"'>L: </span>
+                                        <span *ngIf='order.services.length > 1 && service.type == "Dry Cleaning"'>DC: </span>
+                                        {{service.delivery_date | date: "MMM/dd/yyy hh:mm" }}
+                                    </div>
+                                </span>
+                                <span class='visible-sm'>
+                                    <div>
+                                        <span *ngIf='order.services.length > 1 && service.type == "Laundry"'>L: </span>
+                                        <span *ngIf='order.services.length > 1 && service.type == "Dry Cleaning"'>DC: </span>
+                                        {{service.delivery_date | date: "M/dd/yy" }}
+                                    </div>
+                                </span>
+                            </li>
+                        </ol>
+                    </td>
+                    <td class='hidden-xs hidden-sm text-center'><ai-star [rating]='order.overallRating'></ai-star></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
