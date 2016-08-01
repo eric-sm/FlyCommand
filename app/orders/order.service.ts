@@ -99,6 +99,7 @@ export class OrderService {
             feedback.type_slug = item.type_slug;
             feedback.rating = item.rating;
             feedback.comments = item.comments;
+            feedback.drivers = JSON.parse(item.drivers);
             feedback.create_dtl = item.create_dtl;
 
             feedbacks.push(feedback);

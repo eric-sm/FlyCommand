@@ -1,6 +1,3 @@
-Feedback if any from customer via the app (pickup, cleaning, delivery)
-Support tickets related to the order
-
 <table>
     <thead>
         <tr>
@@ -14,6 +11,11 @@ Support tickets related to the order
             <td>{{feedback.type}}</td>
             <td><ai-star [rating]='feedback.rating'></ai-star></td>
             <td>{{feedback.comments}}</td>
+            <td *ngIf='feedback.type_slug == "pickup_driver" || feedback.type_slug == "laundry_delivery_driver"  || feedback.type_slug == "dry_cleaning_delivery_driver"'>
+                <ul *ngFor='let driver of feedback.drivers'>
+                    <li>{{driver.name_last}}, {{driver.name_first}}</li>
+                </ul>
+            </td>
         </tr>
     </tbody>
 </table>
