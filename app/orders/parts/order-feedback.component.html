@@ -6,7 +6,7 @@
             <td>{{feedback.comments}}</td>
             <td *ngIf='feedback.type_slug == "pickup_driver" || feedback.type_slug == "laundry_delivery_driver"  || feedback.type_slug == "dry_cleaning_delivery_driver"'>
                 <ul *ngFor='let driver of feedback.drivers'>
-                    <li>{{driver.name_last}}, {{driver.name_first}}</li>
+                    <li>{{driver.name_first}} {{driver.name_last}}</li>
                 </ul>
             </td>
         </tr>

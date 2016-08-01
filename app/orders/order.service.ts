@@ -107,4 +107,41 @@ export class OrderService {
         
         return feedbacks;
     }
+
+    public getOrderEvents(orderId: number): Observable<any[]> {
+        var feedbackUrl: string = this._globalService.flyCommandUrl + 'order_events';
+        feedbackUrl += '?json={"order_id":' + orderId + '}';
+
+        return this._http.get(feedbackUrl)
+            .map(this._extractOrderEvents);
+    }
+
+    private _extractOrderEvents(response: Response): any[] {
+        let body = response.json();
+        var events: any = [];
+
+        // Process the response
+        for (var item of body) {
+            var event: any = {};
+            event.id = item.id;
+            event.type = item.type;
+            event.status = item.status;
+            event.on_demand_flag = item.on_demand_flag;
+            event.arrive_estimate = item.arrive_estimate;
+            event.arrive_from = item.arrive_from;
+            event.arrive_to = item.arrive_to;
+            event.start_actual = item.start_actual;
+            event.arrive_actual = item.arrive_actual;
+            event.load_or_unload = item.load_or_unload;
+            event.hammer_flag = item.hammer_flag;
+            event.truck = JSON.parse(item.truck);
+            event.drivers = JSON.parse(item.drivers);
+            event.customer = JSON.parse(item.customer);
+            event.address = JSON.parse(item.address);
+
+            events.push(event);
+        }
+        
+        return events;
+    }
 }

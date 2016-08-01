@@ -1,1 +1,25 @@
-Event List
+<table border=1>
+    <tbody>
+        <tr *ngFor='let event of events'>
+            <td>{{event.type}}</td>
+            <td>{{event.status}}</td>
+            <td *ngIf='on_demand_flag == 0'>{{event.arrive_from}} - {{event.arrive_to}}</td>
+            <td *ngIf='on_demand_flag == 0'>{{event.original_arrive_estimate}}<td>
+            <td>{{event.arrive_estimate}}
+                <span *ngIf='event.hammer_flag == 1'>Locked</span>
+            </td>
+            <td>{{event.start_actual}}</td>
+            <td>{{event.arrive_actual}}</td>
+            <td>{{event.load_or_unload}}</td>
+            <td>{{event.truck.truck_name}}
+                <ul *ngFor='let driver of event.drivers'>
+                    <li>{{driver.name_first}} {{driver.name_last}}</li>
+                </ul>
+            </td>
+            <td>
+                <span>{{event.customer.name_first}} {{event.customer.name_last}}</span>
+                <span>{{event.address.address_label}}</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
