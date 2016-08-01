@@ -1,1 +1,19 @@
-Feedback if any
+Feedback if any from customer via the app (pickup, cleaning, delivery)
+Support tickets related to the order
+
+<table>
+    <thead>
+        <tr>
+            <td>Type</td>
+            <td>Rating</td>
+            <td>Comments</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let feedback of feedbacks'>
+            <td>{{feedback.type}}</td>
+            <td>{{feedback.rating}}</td>
+            <td>{{feedback.comments}}</td>
+        </tr>
+    </tbody>
+</table>

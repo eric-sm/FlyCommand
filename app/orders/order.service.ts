@@ -76,4 +76,34 @@ export class OrderService {
 
         return services;
     }
+
+    public getOrderFeedback(orderId: number): Observable<any[]> {
+        var feedbackUrl: string = this._globalService.flyCommandUrl + 'order_feedback';
+        feedbackUrl += '?json={"order_id":' + orderId + '}';
+
+        return this._http.get(feedbackUrl)
+            .map(this._extractOrderFeedback);
+    }
+
+    private _extractOrderFeedback(response: Response): any[] {
+        let body = response.json();
+        var feedbacks: any = [];
+
+        // Process the response
+        for (var item of body) {
+            var feedback: any = {};
+            feedback.id = item.id;
+            feedback.suborder_id = item.suborder_id;
+            feedback.event_id = item.event_it;
+            feedback.type = item.type;
+            feedback.type_slug = item.type_slug;
+            feedback.rating = item.rating;
+            feedback.comments = item.comments;
+            feedback.create_dtl = item.create_dtl;
+
+            feedbacks.push(feedback);
+        }
+        
+        return feedbacks;
+    }
 }
