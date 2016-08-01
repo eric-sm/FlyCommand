@@ -41,6 +41,7 @@ export class OrderService {
             order.id = item.id;
             order.pickup_date = new Date(item.pickup_date);
             order.overallRating = item.avg_rating;
+            order.price = 0;
 
             // Process the suborders/services
             order.services = [];
@@ -50,6 +51,8 @@ export class OrderService {
                     suborder.id = service.suborder_id;
                     suborder.type = service.type;
                     suborder.status = service.status;
+                    suborder.price = service.total;
+                    order.price = order.price + parseFloat(service.total);
                     if (service.delivery_date && service.delivery_date.length > 0) 
                             suborder.delivery_date = new Date(service.delivery_date);
 

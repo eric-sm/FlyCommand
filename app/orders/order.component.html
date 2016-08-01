@@ -9,6 +9,7 @@
                                         <th>Status</th>
                                         <th class='hidden-xs'>PickUp</th>
                                         <th class='hidden-xs'>Delivery</th>
+                                        <th class='hidden-xs'>Total</th>
                                         <th class='hidden-xs hidden-sm'>Rating</th>
                                         </tr>
                                 </thead>
@@ -80,6 +81,7 @@
                                                 </li>
                                                 </ol>
                                         </td>
+                                        <td class='hidden-xs hidden-sm text-center'>{{order.price | currency:'USD':true:'1.2-2' }}</td>
                                         <td class='hidden-xs hidden-sm text-center'><ai-star [rating]='order.overallRating'></ai-star></td>
                                         </tr>
                                 </tbody>
