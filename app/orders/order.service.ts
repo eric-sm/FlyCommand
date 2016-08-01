@@ -167,5 +167,22 @@ export class OrderService {
         
         return contents;
     }
+    
+
+    public getOrderAdjustments(orderId: number): Observable<any[]> {
+        var adjustmentsUrl: string = this._globalService.flyCommandUrl + 'order_adjustments';
+        adjustmentsUrl += '?json={"order_id":' + orderId + '}';
+
+        return this._http.get(adjustmentsUrl)
+            .map(this._extractOrderAdjustments);
+    }
+
+    private _extractOrderAdjustments(response: Response): any[] {
+        let body = response.json();
+
+        var adjustments: any = body;
+        
+        return adjustments;
+    }
 
 }

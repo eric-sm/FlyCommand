@@ -9,9 +9,10 @@ export class OrderTypeFilterPipe implements PipeTransform {
     transform(value: any[], args: string[]): any[] {
         let type: string = args && args[0] ? args[0] : null;
 
+        if (!value || value.length == 0) return value;
 
         // Filter out the completely cancelled orders
-        var filtered = value.filter(this._checkRow, type);
+        var filtered: any[] = value.filter(this._checkRow, type);
 
         return filtered;
     }

@@ -13,11 +13,14 @@ import { OrderTypeFilterPipe } from './order-services-filter.pipe';
 export class OrderServicesComponent implements OnInit {
     @Input() order: IOrder;
     contents: any;
+    adjustments: any;
 
     constructor(private _orderService: OrderService) {}
 
     ngOnInit():void {
         this._orderService.getOrderContents(this.order.id)
             .subscribe(contents => this.contents = contents);
+        this._orderService.getOrderAdjustments(this.order.id)
+            .subscribe(adjustments => this.adjustments = adjustments);
     }
 }

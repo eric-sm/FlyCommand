@@ -6,6 +6,14 @@
             <td>{{item.price}}</td>
             <td>{{item.scancode}}</td>
         </tr>
+        
+        <tr *ngFor='let adjustment of adjustments | orderTypeFilter: [1] '>
+            <td>{{adjustment.description}}</td>
+            <td>{{adjustment.percent}}</td>
+            <td>{{adjustment.value}}</td>
+            <td>{{adjustment.promo_code}}</td>
+            <td>{{adjustment.promo_description}}</td>
+        </tr>
     </tbody>
 </table>
 <br>
