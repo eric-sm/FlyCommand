@@ -10,10 +10,12 @@ import { OrderService } from '../order.service';
 })
 export class OrderPreferencesComponent implements OnInit {
     @Input() order: IOrder;
-    services: IOrderService[];
+    preferences: any;
 
     constructor(private _orderService: OrderService) {}
 
     ngOnInit():void {
+        this._orderService.getOrderPreferences(this.order.id)
+            .subscribe(preferences => this.preferences = preferences);
     }
 }

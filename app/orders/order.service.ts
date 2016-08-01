@@ -109,10 +109,10 @@ export class OrderService {
     }
 
     public getOrderEvents(orderId: number): Observable<any[]> {
-        var feedbackUrl: string = this._globalService.flyCommandUrl + 'order_events';
-        feedbackUrl += '?json={"order_id":' + orderId + '}';
+        var eventsUrl: string = this._globalService.flyCommandUrl + 'order_events';
+        eventsUrl += '?json={"order_id":' + orderId + '}';
 
-        return this._http.get(feedbackUrl)
+        return this._http.get(eventsUrl)
             .map(this._extractOrderEvents);
     }
 
@@ -145,4 +145,22 @@ export class OrderService {
         
         return events;
     }
+    
+
+    public getOrderPreferences(orderId: number): Observable<any[]> {
+        var prefsUrl: string = this._globalService.flyCommandUrl + 'order_preferences';
+        prefsUrl += '?json={"order_id":' + orderId + '}';
+
+        return this._http.get(prefsUrl)
+            .map(this._extractOrderPreferences);
+    }
+
+    private _extractOrderPreferences(response: Response): any[] {
+        let body = response.json();
+
+        var preferences: any = body;
+        
+        return preferences;
+    }
+
 }

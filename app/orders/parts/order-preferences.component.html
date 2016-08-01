@@ -1,1 +1,60 @@
-Preferences screen 
+<table *ngIf='preferences'>
+    <tr>
+        <td>Priority (prior to V3)</td>
+        <td>
+            <span *ngIf='!preferences.priority'>Not Set</span>
+            <span *ngIf='preferences.priority && preferences.priority == 1'>Yes</span>
+            <span *ngIf='preferences.priority && preferences.priority == 0'>No</span>
+        </td>
+    </tr>
+    <tr>
+        <td>Driver Tip (total for full order)</td>
+        <td>{{preferences.drivers_tip}}</td>
+    </tr>
+</table>
+<table *ngIf='preferences && preferences.is_laundry'>
+    <tr>
+        <td>Has Hang Dry</td>
+        <td><span *ngIf='preferences.has_hang_dry'>Yes</span><span *ngIf='!preferences.has_hang_dry'>No</span></td>
+    </tr>
+    <tr>
+        <td>Fabric Softener</td>
+        <td><span *ngIf='preferences.fabric_softener'>Yes</span><span *ngIf='!preferences.fabric_softener'>No</span></td>
+    </tr>
+    <tr>
+        <td>Unscented Detergent</td>
+        <td><span *ngIf='preferences.unscented_detergent'>Yes</span><span *ngIf='!preferences.unscented_detergent'>No</span></td>
+    </tr>
+    <tr>
+        <td>Separate Whites/Colors</td>
+        <td><span *ngIf='preferences.separate_whites_colors'>Yes</span><span *ngIf='!preferences.separate_whites_colors'>No</span></td>
+    </tr>
+    <tr>
+        <td>Bleach Whites</td>
+        <td><span *ngIf='preferences.bleach_whites'>Yes</span><span *ngIf='!preferences.bleach_whites'>No</span></td>
+    </tr>
+    <tr>
+        <td>Wash & Fold Instructions</td>
+        <td>{{preferences.laundry_instructions}}</td>
+    </tr>
+</table>
+<table *ngIf='preferences && preferences.is_dry_cleaning'>
+    <tr>
+        <td>Green Cleaning</td>
+        <td><span *ngIf='preferences.green_dry_cleaning'>Yes</span><span *ngIf='!preferences.green_dry_cleaning'>No</span></td>
+    </tr>
+    <tr *ngIf='preferences.is_wash_and_press'>
+        <td>Starch Level</td>
+        <td>
+            <span *ngIf='preferences.starch_level == 0'>None</span>
+            <span *ngIf='!preferences.starch_level == 1'>Light</span>
+            <span *ngIf='!preferences.starch_level == 2'>MediumNo</span>
+            <span *ngIf='!preferences.starch_level == 3'>Heavy</span>
+        </td>
+    </tr>
+    <tr>
+        <td>Dry Cleaning Instructions</td>
+        <td>{{preferences.dry_cleaning_instructions}}</td>
+    </tr>
+</table>
+
