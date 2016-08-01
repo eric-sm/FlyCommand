@@ -1,1 +1,22 @@
-Services
+<table border=1 *ngIf='contents'>
+    <tbody>
+        <tr *ngFor='let item of contents | orderTypeFilter: [1] '>
+            <td>{{item.type}}</td>
+            <td>{{item.weight}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.scancode}}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<table border=1 *ngIf='contents'>
+    <tbody>
+        <tr *ngFor='let item of contents | orderTypeFilter: [2] '>
+            <td>{{item.type}}</td>
+            <td>{{item.weight}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.scancode}}</td>
+        </tr>
+    </tbody>
+</table>
+<div *ngIf='!contents || contents.length == 0'>No items in this order</div>

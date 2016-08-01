@@ -62,21 +62,6 @@ export class OrderService {
         return orders;
     }    
 
-    public getOrderServices(orderId: number): Observable<IOrderService[]> {
-        var orderUrl: string = this._globalService.flyCommandUrl + 'order_services';
-        orderUrl += '?json={"order_id":' + orderId + '}';
-
-        return this._http.get(orderUrl)
-            .map(this._extractOrderServices);
-    }
-
-    private _extractOrderServices(response: Response): IOrderService[] {
-        let body = response.json();
-        var services: IOrderService[] = [];
-
-        return services;
-    }
-
     public getOrderFeedback(orderId: number): Observable<any[]> {
         var feedbackUrl: string = this._globalService.flyCommandUrl + 'order_feedback';
         feedbackUrl += '?json={"order_id":' + orderId + '}';
@@ -161,6 +146,23 @@ export class OrderService {
         var preferences: any = body;
         
         return preferences;
+    }
+    
+
+    public getOrderContents(orderId: number): Observable<any[]> {
+        var contentsUrl: string = this._globalService.flyCommandUrl + 'order_contents';
+        contentsUrl += '?json={"order_id":' + orderId + '}';
+
+        return this._http.get(contentsUrl)
+            .map(this._extractOrderContents);
+    }
+
+    private _extractOrderContents(response: Response): any[] {
+        let body = response.json();
+
+        var contents: any = body;
+        
+        return contents;
     }
 
 }

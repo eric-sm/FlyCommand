@@ -2,20 +2,22 @@ import { Component, Input, OnInit } from 'angular2/core';
 import { IOrder } from '../order';
 import { IOrderService } from './order-service';
 import { OrderService } from '../order.service';
+import { OrderTypeFilterPipe } from './order-services-filter.pipe';
 
 
 @Component({
     selector: 'fcc-order-services',
-    templateUrl: 'app/orders/parts/order-services.component.html'
+    templateUrl: 'app/orders/parts/order-services.component.html',
+    pipes: [OrderTypeFilterPipe]
 })
 export class OrderServicesComponent implements OnInit {
     @Input() order: IOrder;
-    services: IOrderService[];
+    contents: any;
 
     constructor(private _orderService: OrderService) {}
 
     ngOnInit():void {
-        this._orderService.getOrderServices(this.order.id)
-            .subscribe(services => this.services);
+        this._orderService.getOrderContents(this.order.id)
+            .subscribe(contents => this.contents = contents);
     }
 }
