@@ -18,7 +18,7 @@ export class OrderTypeFilterPipe implements PipeTransform {
     }
 
     private _checkRow(row: any): boolean {
-        if (row.order_type_id == this) return true;
+        if (row.order_type_id === null || row.order_type_id == this) return true;
         else return false;
     }
 }

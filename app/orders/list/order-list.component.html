@@ -15,8 +15,10 @@
             <tbody class='results-body'>
                 <tr *ngFor='let order of orders
                             | orderNumberFilter: [filterOrderNumber] 
-                            | cancelledOrdersFilter: [showCancelled.toString()]'
-                        (click)='selectOrder(order)'>
+                            | cancelledOrdersFilter: [showCancelled.toString()];
+                            let isOdd = odd'
+                        (click)='selectOrder(order)'
+                        [class.results-odd]='isOdd'>
 
                     <!-- Order ID -->
                     <td class='text-center'>

@@ -8,6 +8,7 @@ import { OrderTypeFilterPipe } from './order-services-filter.pipe';
 @Component({
     selector: 'fcc-order-services',
     templateUrl: 'app/orders/parts/order-services.component.html',
+    styleUrls: ['app/orders/parts/order-parts.component.css'],
     pipes: [OrderTypeFilterPipe]
 })
 export class OrderServicesComponent implements OnInit {

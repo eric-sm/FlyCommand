@@ -306,3 +306,6 @@ footer .copyright > div {
 .results-body li {
     font-size: 14px;
 }
+.results-odd {
+    background-color: #e6eaf3;
+}

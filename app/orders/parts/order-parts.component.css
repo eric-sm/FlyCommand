@@ -1,0 +1,11 @@
+h2 {
+    font-size: 20px;
+    color: white;
+    background-color: #005dab;
+    margin: 20px 0 0;
+    padding: 5px 20px 5px;
+}
+
+table {
+    width: 100%;
+}

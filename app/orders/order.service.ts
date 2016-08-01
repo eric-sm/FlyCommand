@@ -113,6 +113,8 @@ export class OrderService {
             var event: any = {};
             event.id = item.id;
             event.type = item.type;
+            event.order_type_id = item.order_type_id;
+            if (event.type == 'Pickup') event.order_type_id = null;
             event.status = item.status;
             event.on_demand_flag = item.on_demand_flag;
             event.original_arrive_estimate = item.original_arrive_estimate;
