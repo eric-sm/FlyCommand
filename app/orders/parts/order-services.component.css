@@ -22,3 +22,17 @@
     position: relative;
     top: -1px;
 }
+.heading {
+    font-size: 20px;
+    color: white;
+    background-color: #005dab;
+    margin: 20px 0 0;
+    padding: 5px 20px 5px;
+    border: #005dab 5px solid;
+}
+.divider {
+    height: 40px;
+}
+.order-total {
+    font-size: 24px;
+}

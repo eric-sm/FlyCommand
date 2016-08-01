@@ -1,7 +1,9 @@
 <div *ngIf='contents' class='services'>
-    <h2><img src='app/assets/images/laundry_icon.jpg'> Wash & Fold Bag</h2>
+    
     <table>
+        <!-- Wash & Fold -->
         <tbody>
+            <tr class='heading'><td colspan='100'><img src='app/assets/images/laundry_icon.jpg'> Wash & Fold Bag</td></tr>
             <tr *ngFor='let item of contents | orderTypeFilter: [1];
                 let isOdd = odd' [class.results-odd]='isOdd'>
                 <td>
@@ -17,7 +19,7 @@
                 <td></td>
                 <td>{{item.price | currency:'USD':true:'1.2-2' }}</td>
             </tr>
-            <tr class='subtotal'><td colspan='100'>Order Subtotal: </td></tr>
+            <tr class='subtotal'><td colspan='100'>Bag Subtotal: </td></tr>
             <tr *ngFor='let adjustment of adjustments | orderTypeFilter: [1];
                 let isOdd = odd' [class.results-odd]='isOdd'>
                 <td>{{adjustment.promo_code}} {{adjustment.description}}</td>
@@ -25,15 +27,12 @@
                 <td><span *ngIf='adjustment.percent'>{{adjustment.percent}}%</span></td>
                 <td>{{adjustment.value | currency:'USD':true:'1.2-2' }}</td>
             </tr>
-            <tr class='subtotal'><td colspan='100'>Bag Subtotal: </td></tr>
             <tr class='total'><td colspan='100'>Wash & Fold Subtotal: </td></tr>
-        </tbody>
-    </table>
-    
+            <tr class='divider'><td colspan='100'></td></tr>
 
-    <h2><img src='app/assets/images/dry_cleaning_icon.jpg'> Garment Bag</h2>
-    <table>
-        <tbody>
+
+            <!-- Dry Cleaning -->
+            <tr class='heading'><td colspan='100'><img src='app/assets/images/dry_cleaning_icon.jpg'> Dry Cleaning Bag</td></tr>
             <tr *ngFor='let item of contents | orderTypeFilter: [2];
                 let isOdd = odd' [class.results-odd]='isOdd'>
                 <td>{{item.type}}</td>
@@ -44,7 +43,7 @@
                 <td>{{item.color}}</td>
                 <td>{{item.price | currency:'USD':true:'1.2-2' }}</td>
             </tr>
-            <tr class='subtotal'><td colspan='100'>Order Subtotal: </td></tr>
+            <tr class='subtotal'><td colspan='100'>Bag Subtotal: </td></tr>
             <tr *ngFor='let adjustment of adjustments | orderTypeFilter: [2];
                 let isOdd = odd' [class.results-odd]='isOdd'>
                 <td>{{adjustment.promo_code}} {{adjustment.description}}</td>
@@ -52,11 +51,10 @@
                 <td><span *ngIf='adjustment.percent'>{{adjustment.percent}}%</span></td>
                 <td>{{adjustment.value | currency:'USD':true:'1.2-2' }}</td>
             </tr>
-            <tr class='subtotal'><td colspan='100'>Bag Subtotal: </td></tr>
             <tr class='total'><td colspan='100'>Dry Cleaning Subtotal: </td></tr>
+            <tr class='heading order-total'><td colspan='100'>Order Total: </td></tr>
         </tbody>
     </table>
-    <h2>Order Total</h2>
 </div>
 
 <div *ngIf='!contents || contents.length == 0'>No items in this order</div>
