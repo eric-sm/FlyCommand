@@ -47,7 +47,7 @@ export class OrderService {
             if (item.services) {
                 for (var service of item.services) {
                     var suborder: ISubOrder = <ISubOrder>{};
-                    suborder.id = service.id;
+                    suborder.id = service.suborder_id;
                     suborder.type = service.type;
                     suborder.status = service.status;
                     if (service.delivery_date && service.delivery_date.length > 0) 
