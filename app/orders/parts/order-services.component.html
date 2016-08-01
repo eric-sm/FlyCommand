@@ -1,47 +1,62 @@
-<div *ngIf='contents'>
-    <h2><img src='app/assets/images/laundry_icon.jpg'> Wash & Fold</h2>
+<div *ngIf='contents' class='services'>
+    <h2><img src='app/assets/images/laundry_icon.jpg'> Wash & Fold Bag</h2>
     <table>
         <tbody>
             <tr *ngFor='let item of contents | orderTypeFilter: [1];
                 let isOdd = odd' [class.results-odd]='isOdd'>
-                <td>{{item.type}}</td>
-                <td>{{item.weight}}</td>
-                <td>{{item.price}}</td>
-                <td>{{item.scancode}}</td>
+                <td>
+                    {{item.type}}
+                    <span class='weight' *ngIf='item.weight'>
+                        {{item.weight}}-lbs. @ {{item.price/item.weight | currency:'USD':true:'1.2-2'}}/lb.
+                    </span>
+                </td>
+                <td>
+                    <span *ngIf='item.type_id == 4'>FCL{{item.scancode}}</span>
+                    <span *ngIf='item.type_id == 29'>FCH{{item.scancode}}</span>
+                </td>
+                <td></td>
+                <td>{{item.price | currency:'USD':true:'1.2-2' }}</td>
             </tr>
-            
+            <tr class='subtotal'><td colspan='100'>Order Subtotal: </td></tr>
             <tr *ngFor='let adjustment of adjustments | orderTypeFilter: [1];
                 let isOdd = odd' [class.results-odd]='isOdd'>
-                <td>{{adjustment.description}}</td>
-                <td>{{adjustment.percent}}</td>
-                <td>{{adjustment.value}}</td>
-                <td>{{adjustment.promo_code}}</td>
-                <td>{{adjustment.promo_description}}</td>
+                <td>{{adjustment.promo_code}} {{adjustment.description}}</td>
+                <td></td>
+                <td><span *ngIf='adjustment.percent'>{{adjustment.percent}}%</span></td>
+                <td>{{adjustment.value | currency:'USD':true:'1.2-2' }}</td>
             </tr>
+            <tr class='subtotal'><td colspan='100'>Bag Subtotal: </td></tr>
+            <tr class='total'><td colspan='100'>Wash & Fold Subtotal: </td></tr>
         </tbody>
     </table>
-    <h2><img src='app/assets/images/dry_cleaning_icon.jpg'> Dry Cleaning</h2>
+    
+
+    <h2><img src='app/assets/images/dry_cleaning_icon.jpg'> Garment Bag</h2>
     <table>
         <tbody>
             <tr *ngFor='let item of contents | orderTypeFilter: [2];
                 let isOdd = odd' [class.results-odd]='isOdd'>
                 <td>{{item.type}}</td>
-                <td>{{item.weight}}</td>
-                <td>{{item.price}}</td>
-                <td>{{item.scancode}}</td>
+                <td style='text-align: center;'>
+                    <span *ngIf='item.scancode'>FCG{{item.scancode}}</span>
+                    <span class='tagcode'>{{item.tagcode}}</span>
+                </td>
+                <td>{{item.color}}</td>
+                <td>{{item.price | currency:'USD':true:'1.2-2' }}</td>
             </tr>
-            
+            <tr class='subtotal'><td colspan='100'>Order Subtotal: </td></tr>
             <tr *ngFor='let adjustment of adjustments | orderTypeFilter: [2];
                 let isOdd = odd' [class.results-odd]='isOdd'>
-                <td>{{adjustment.description}}</td>
-                <td>{{adjustment.percent}}</td>
-                <td>{{adjustment.value}}</td>
-                <td>{{adjustment.promo_code}}</td>
-                <td>{{adjustment.promo_description}}</td>
+                <td>{{adjustment.promo_code}} {{adjustment.description}}</td>
+                <td></td>
+                <td><span *ngIf='adjustment.percent'>{{adjustment.percent}}%</span></td>
+                <td>{{adjustment.value | currency:'USD':true:'1.2-2' }}</td>
             </tr>
+            <tr class='subtotal'><td colspan='100'>Bag Subtotal: </td></tr>
+            <tr class='total'><td colspan='100'>Dry Cleaning Subtotal: </td></tr>
         </tbody>
     </table>
-    <h2>Total</h2>
+    <h2>Order Total</h2>
 </div>
 
 <div *ngIf='!contents || contents.length == 0'>No items in this order</div>
