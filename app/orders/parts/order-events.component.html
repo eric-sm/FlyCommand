@@ -1,24 +1,44 @@
 <table border=1>
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Type</td>
+            <td>Status</td>
+            <td>Location</td>
+            <td>Planned Arrival</td>
+            <td>True Arrival</td>
+            <td>Truck/Drivers</td>
+        </tr>
+    </thead>
     <tbody>
         <tr *ngFor='let event of events'>
-            <td>{{event.type}}</td>
+            <td>{{event.id}}</td>
+            <td>{{event.type}}<br/>{{event.load_or_unload}}</td>
             <td>{{event.status}}</td>
-            <td *ngIf='on_demand_flag == 0'>{{event.arrive_from}} - {{event.arrive_to}}</td>
-            <td *ngIf='on_demand_flag == 0'>{{event.original_arrive_estimate}}<td>
-            <td>{{event.arrive_estimate}}
-                <span *ngIf='event.hammer_flag == 1'>Locked</span>
+            <td>
+                <span *ngIf='event.type == "Pickup" || event.type == "Delivery" || event.type == "Retrieval"'>
+                        {{event.customer.name_first}} {{event.customer.name_last}}<br/>
+                        {{event.address.street_1}}
+                </span>
+                <span *ngIf='event.type != "Pickup" && event.type != "Delivery" && event.type != "Retrieval"'>
+                        {{event.address.address_label}}</span>
             </td>
-            <td>{{event.start_actual}}</td>
-            <td>{{event.arrive_actual}}</td>
-            <td>{{event.load_or_unload}}</td>
+            <td>
+                <span *ngIf='event.on_demand_flag == 0'>{{event.arrive_from}} - {{event.arrive_to}}</span>
+                <span *ngIf='event.on_demand_flag == 1'>{{event.original_arrive_estimate}}</span>
+            </td>
+            <td>
+                <span *ngIf='!event.arrive_actual'>{{event.arrive_estimate}} (est.)
+                    <span *ngIf='event.start_actual'>(in progress)</span>
+                    <span *ngIf='event.hammer_flag == 1'>(locked)</span>
+                </span>
+                <span *ngIf='event.arrive_actual'>{{event.arrive_actual}}</span>
+                
+            </td>
             <td>{{event.truck.truck_name}}
                 <ul *ngFor='let driver of event.drivers'>
                     <li>{{driver.name_first}} {{driver.name_last}}</li>
                 </ul>
-            </td>
-            <td>
-                <span>{{event.customer.name_first}} {{event.customer.name_last}}</span>
-                <span>{{event.address.address_label}}</span>
             </td>
         </tr>
     </tbody>

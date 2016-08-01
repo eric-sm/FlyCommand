@@ -127,9 +127,10 @@ export class OrderService {
             event.type = item.type;
             event.status = item.status;
             event.on_demand_flag = item.on_demand_flag;
-            event.arrive_estimate = item.arrive_estimate;
+            event.original_arrive_estimate = item.original_arrive_estimate;
             event.arrive_from = item.arrive_from;
             event.arrive_to = item.arrive_to;
+            event.arrive_estimate = item.arrive_estimate;
             event.start_actual = item.start_actual;
             event.arrive_actual = item.arrive_actual;
             event.load_or_unload = item.load_or_unload;
